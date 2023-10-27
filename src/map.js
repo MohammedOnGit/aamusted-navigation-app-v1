@@ -51,3 +51,41 @@ const map = L.map("map", {
        maxSearchResults: 3
    }).addTo(map);
   
+  
+// Routing control
+const routingControl = L.Routing.control({
+    waypoints: [
+      L.latLng(57.74, 11.94),
+      L.latLng(57.6792, 11.949),
+    ],
+    routeWhileDragging: false,
+   
+  }).addTo(map);
+  
+  function createButton(label, container) {
+    var btn = L.DomUtil.create('button', '', container);
+    btn.setAttribute('type', 'button');
+    btn.innerHTML = label;
+    return btn;
+  }
+  
+  map.on('click', function(e) {
+    var container = L.DomUtil.create('div');
+    var startBtn = createButton('Start from this location', container);
+    var destBtn = createButton('Go to this location', container);
+  
+    L.popup()
+      .setContent(container)
+      .setLatLng(e.latlng)
+      .openOn(map);
+  
+    L.DomEvent.on(startBtn, 'click', function() {
+      routingControl.spliceWaypoints(0, 1, e.latlng);
+      map.closePopup();
+    });
+  
+    L.DomEvent.on(destBtn, 'click', function() {
+      routingControl.spliceWaypoints(routingControl.getWaypoints().length - 1, 1, e.latlng);
+      map.closePopup();
+    });
+  });

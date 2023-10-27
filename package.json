@@ -6,6 +6,7 @@
   "dependencies": {
     "bootstrap": "^5.3.2",
     "leaflet": "^1.9.4",
+    "leaflet-routing-machine": "^3.2.12",
     "leaflet.pinsearch": "^1.0.4"
   },
   "scripts": {
