@@ -1,0 +1,14 @@
+{
+  "name": "aamusted-navigation-app-v1",
+  "version": "1.0.0",
+  "description": "aamusted navigation app",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ibrahim mohammed",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  }
+}
