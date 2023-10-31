@@ -1,50 +1,60 @@
+// Create a Leaflet map
 const map = L.map("map", {
   center: [6.6993, -1.68009],
   zoom: 14,
   zoomControl: false,
 });
 
-const createTileLayer = (url, attribution) => {
-  return L.tileLayer(url, { attribution, maxZoom: 25 });
-};
+// Create a reusable function for adding tile layers
+function addTileLayer(url, attribution) {
+  return L.tileLayer(url, { attribution, maxZoom: 25 }).addTo(map);
+}
 
-// Create OpenStreetMap and Esri World Imagery layers
-const osmLayer = createTileLayer(
+// Check if the view should be restored or set the default view
+if (!map.restoreView()) {
+  const userChoice = window.confirm("Do you want to restore the previous view?");
+  if (userChoice) {
+    map.setView([50.5, 30.51], 15); // Restore the view
+  } else {
+    window.location.reload(); // Reload the page
+  }
+}
+
+// Define tile layer URLs and attributions
+const osmLayer = addTileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-).addTo(map);
+);
 
-const esriWorldImageryLayer = createTileLayer(
+const esriWorldImageryLayer = addTileLayer(
   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
   "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
-).addTo(map);
+);
 
-// Function to display an offline message
+// Create a function to display an offline message
 function showOfflineMessage() {
   alert("You are currently offline. Please check your internet connection and try again.");
 }
 
-// Function to reload the page
+// Create a function to reload the page
 function reloadPage() {
   window.location.reload();
 }
 
 // Handle tile layer errors
-osmLayer.on("tileerror", function (e) {
-  console.error("Error loading OpenStreetMap tile:", e.error.target.src);
-  // Display an error message to the user
-  alert("Error loading OpenStreetMap tiles. Please click OK to reload the page.");
-  // Reload the page when the user clicks "OK"
-  window.location.reload();
-});
+function handleTileError(layer, message) {
+  layer.on("tileerror", function (e) {
+    console.error(`Error loading ${layer.options.attribution} tile:`, e.error.target.src);
+    const userChoice = window.confirm(`Error loading ${layer.options.attribution} tiles. Do you want to reload the page?`);
+    if (userChoice) {
+      window.location.reload(); // Reload the page
+    }
+  });
+} 
 
-esriWorldImageryLayer.on("tileerror", function (e) {
-  console.error("Error loading Esri World Imagery tile:", e.error.target.src);
-  // Display an error message to the user
-  alert("Error loading Esri World Imagery tiles. Please click OK to reload the page.");
-  // Reload the page when the user clicks "OK"
-  window.location.reload();
-});
+// Handle errors for both tile layers
+handleTileError(osmLayer, "OpenStreetMap");
+handleTileError(esriWorldImageryLayer, "Esri World Imagery");
 
 // Listen for online and offline events
 window.addEventListener("offline", showOfflineMessage);
@@ -52,10 +62,6 @@ window.addEventListener("online", reloadPage);
 
 
 // Add error handling for other tile layers as needed
-
-
-
-
 
 const baseMaps = {
   "OpenStreetMap": osmLayer,
