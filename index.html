@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
@@ -33,8 +31,8 @@
     html,
     body,
     #map {
-      height: 100%;
-      width: 100vw;
+      height: 100vh;
+      width: 100%;
     }
 
     .row {
@@ -197,250 +195,11 @@
 <body>
   <div id="map"></div>
 
-  <!-- social -->
+   
 
-  <!-- <div class="list-group">
-=======
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <link
-      rel="stylesheet"
-      href="../node_modules/bootstrap/dist/css/bootstrap.css"
-    />
-    <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
-    <script src="../node_modules/leaflet/dist/leaflet.js"></script>
-
-    <!-- leaflet pin search css -->
-    <link
-      rel="stylesheet"
-      href="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.css"
-    />
-
-    <!-- leaflet routing machine -->
-    <link
-      rel="stylesheet"
-      href="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
-    />
-
-    <!-- leaflet slide menu css -->
-    <link
-      rel="stylesheet"
-      href="./node_modules/leaflet-slidemenu/src/L.Control.SlideMenu.css"
-    />
-    <!-- slide menu fonts -->
-    <link
-      rel="stylesheet"
-      href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-
-    <!-- social css -->
-    <link rel="stylesheet" href="./src/css/social.css" />
-
-    <title>Document</title>
-    <style>
-      body {
-        padding: 0;
-        margin: 0;
-      }
-      html,
-      body,
-      #map {
-        height: 100%;
-        width: 100vw;
-      }
-
-      .row {
-        display: flex;
-        flex-direction: column;
-      }
-      .container-fluid {
-        background: #ffffff;
-        height: 120px;
-        margin: 5px;
-        width: 95%;
-        border-top-right-radius: 8px;
-        border-top-left-radius: 8px;
-        padding: 1px;
-      }
-
-      .uw-slant,
-      .uw-slant-large {
-        background-color: #eb1717;
-        transform: skew(-25deg, 0);
-        display: block;
-        width: 80%;
-        margin-left: 20px;
-        height: 3px;
-        margin-bottom: 10px;
-        transition: 0.5s;
-        flex-shrink: 0;
-      }
-
-      #title-slant {
-        margin-left: 10%;
-        width: 77%;
-      }
-
-      .uw-slant-large {
-        transform: skew(0deg, 0);
-        margin-left: 20px;
-        width: 70.6%;
-        height: 5px;
-      }
-
-      #title {
-        color: #006938;
-        font-size: 12pt;
-        width: 220px;
-        box-sizing: border-box;
-        margin: 8%;
-        padding-left: 5px;
-        font-weight: 700;
-        font-family: "Castoro", sans-serif;
-        opacity: 1;
-        margin-top: 10px;
-        margin-bottom: 3px;
-        margin-left: 10%;
-      }
-
-      .leaflet-menu {
-        position: absolute;
-        background-color: #8c013c;
-        overflow: auto;
-        cursor: default;
-        z-index: 9999;
-      }
-      .list-group{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        border: none;
-        
-      }
-      .list-group{
-        display: flex;
-        flex-direction: column;
-        margin-top: 0px;
-        padding: 0px;
-        margin-left: 0px;
-        
-       
-      }
-     .list-group-item{
-        font-size: small;
-        margin-left: 0px;
-        padding: 4px;
-       
-       
-      }
-      .list-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    border-radius: 0px;
-    
-    }
-      #terms{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-       
-      }
-    
-      .accordion{
-        width: 100%;
-        margin-left: 0px;
-        padding-left: 10px;
-      
-      }
-      
-      .accordion-body{
-        height: auto;
-        max-height: 90px;
-        overflow-y: visible;
-        overflow-x: hidden;
-        margin: 0px;
-        padding: 0px;
-        margin-left: 20px;
-        
-        width: 80%;
-      }
-      .header {
-        display: block;
-        margin-left: 20px;
-        margin-top: 5px;
-        margin-bottom: 0px;
-        color: #FFFFFF;
-        opacity: 1;
-        font-size: 12pt;
-        font-weight: bold;
-        cursor: pointer;
-        padding: 5px 5px 2px 2px;
-        width: 90%;
-       
-
-        }
-
-        .header:hover {
-          opacity: 0.6;
-          transition: 0.2s;
-        }
-        .accordion-item {
-    background-color: #8C013C;
-    width: 100%;
-    margin-left: 0px;
-    margin-top: 10px;
-    border: none;
-    
-    
-    }
-       
-        .header {
-            margin-top: 5px;
-          }
-     
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-
-    <!-- social -->
-
-    
-    
-
-    <!-- <div class="list-group">
->>>>>>> slide-menu
-      <button   type="button" id="flyToButton1" class="list-group-item list-group-item-action" aria-current="true">
-       Opoku ware hall
-      </button>
-      <button type="button" id="flyToButton2" class="list-group-item list-group-item-action">Rob</button>
-      <button type="button" id="opoku-ware-mosqueBtn" class="list-group-item list-group-item-action">Opoku ware mosque</button>
-      <button type="button" id="canteen-btn" class="list-group-item list-group-item-action">Canteen</button>
-      <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>
-    </div> -->
-
-<<<<<<< HEAD
-  <!-- <h6 class="header" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-=======
-    <!-- <h6 class="header" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
->>>>>>> slide-menu
-      BUILDINGS
-    </h6>
-    <span class="uw-slant"></span> -->
-
-<<<<<<< HEAD
   <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
-=======
-    <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
->>>>>>> slide-menu
+
+    <!-- <div class="accordion accordion-flush" id="accordionFlushExample">> slide-menu
       <div class="accordion-item">
           <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
             LECTURE HALLS
@@ -493,7 +252,7 @@
         </div>
       </div>
     </div>  -->
-<<<<<<< HEAD
+
 <!--  
   <div class="accordion accordion" id="accordionFlushExample">
     <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
@@ -585,7 +344,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Opoku ware hall</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -628,7 +387,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Autonomy Hall</h5>
+        <h5 class="modal-title" id="exampleModalLabel">ROB</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -650,7 +409,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Autonomy Hall</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Uncompleted auditorium</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -672,7 +431,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Autonomy Hall</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Atwima hall</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -689,10 +448,6 @@
   </div>
 </div>
 
-
-
-
-
   <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- leaflet pin search js -->
   <script src="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.js"></script>
@@ -702,20 +457,7 @@
   <script src="./node_modules/@bagage/leaflet.restoreview/leaflet.restoreview.js"></script>
   <script src="./src/js/map.js"></script>
 </body>
-
 </html>
-=======
-    
-    
-    
-    
 
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- leaflet pin search js -->
-    <script src="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.js"></script>
-    <script src="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
-    <script src="./node_modules/leaflet-slidemenu/src/L.Control.SlideMenu.js"></script>
-    <script src="./src/js/map.js"></script>
-  </body>
-</html>
->>>>>>> slide-menu
+   
+
