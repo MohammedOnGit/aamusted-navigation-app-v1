@@ -1,20 +1,20 @@
 // Create a Leaflet map
 const map = L.map("map", {
-  center: [6.6993, -1.68009],
-  zoom: 14,
+  center: [6.7004,-1.6811],
+  zoom: 10,
   zoomControl: false,
 });
 
 // Create a reusable function for adding tile layers
 function addTileLayer(url, attribution) {
-  return L.tileLayer(url, { attribution, maxZoom: 25 }).addTo(map);
+  return L.tileLayer(url, { attribution, maxZoom: 19 }).addTo(map);
 }
 
 // Check if the view should be restored or set the default view
 if (!map.restoreView()) {
   const userChoice = window.confirm("Do you want to restore the previous view?");
   if (userChoice) {
-    map.setView([50.5, 30.51], 15); // Restore the view
+    map.setView([50.5, 30.51], 19); // Restore the view
   } else {
     window.location.reload(); // Reload the page
   }
@@ -64,9 +64,14 @@ window.addEventListener("online", reloadPage);
 // Add error handling for other tile layers as needed
 
 const baseMaps = {
-  "OpenStreetMap": osmLayer,
   "Esri World Imagery": esriWorldImageryLayer,
+  "OpenStreetMap": osmLayer,
 };
+
+/* setting the default view to the users current location
+map.locate({setView: true, maxZoom: 16});
+*/
+
 
 
 const routingControl = L.Routing.control({
@@ -120,29 +125,23 @@ const facbookLink = '<div class="child child-4"> <button class="button btn-4"><s
 const allLinks = '<div class="parent">'+ twitterLink + instagramLink + githubLink + facbookLink +'</div>';
 
 
-
-
-//contains information about marker with images
-const card = '<div class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">Card title</h5><h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6><p class="card-text"></p><a href="#" class="card-link">Card link</a><a href="#" class="card-link">Another link</a></div></div>';
-
-
 //Acoordion Item
 const officesAcordionItem ='<h2 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">OFFICES</h2><span class="uw-slant"></span><div class="accordion-item"><div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group"><button type="button" id = "acount-office-btn" class="list-group-item list-group-item-action" aria-current="true">Accounts Office</button><button type="button" class="list-group-item list-group-item-action">A second item</button><button type="button" class="list-group-item list-group-item-action">A third button item</button><button type="button" class="list-group-item list-group-item-action">A fourth button item</button><button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button></div></div></div></div>';
 
 //accordion item 2
 
-const accordionItem2 = ' <h2 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">Accordion Item #2</h2><span class="uw-slant"></span><div class="accordion-item"><div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group"><button type="button" class="list-group-item list-group-item-action" aria-current="true">The current button</button><button type="button" class="list-group-item list-group-item-action">A second item</button><button type="button" class="list-group-item list-group-item-action">A third button item</button><button type="button" class="list-group-item list-group-item-action">A fourth button item</button><button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button></div></div></div></div>';
+const hostelsAccordionItem = ' <h2 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">HOSTELS</h2><span class="uw-slant"></span><div class="accordion-item"><div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group"><button type="button" class="list-group-item list-group-item-action" aria-current="true">The current button</button><button type="button" class="list-group-item list-group-item-action">A second item</button><button type="button" class="list-group-item list-group-item-action">A third button item</button><button type="button" class="list-group-item list-group-item-action">A fourth button item</button><button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button></div></div></div></div>';
 
 // Lecture Halls Accordion item
 const letureHallsAccordionItem = '<h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">LECTURE HALLS</h6><div class="accordion-item"><span class="uw-slant"></span><div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group"><button type="button" id="rob-btn" class="list-group-item list-group-item-action">ROB</button><button type="button" id="new-buildinglh-btn" class="list-group-item list-group-item-action">New building</button><button type="button" id="NFB-btn" class="list-group-item list-group-item-action">New faculty building</button><button type="button" id="NLB-btn" class="list-group-item list-group-item-action">New library building</button><button type="button" id="computer-lab1-btn" class="list-group-item list-group-item-action">Computer lab one</button><button type="button" id="computer-lab2-btn" class="list-group-item list-group-item-action">Computer lab two</button></div></div></div></div>';
 
 // Buildings Accordion
-const buildingsAccordionItem = '<div class="accordion-item"><h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"aria-expanded="false" aria-controls="flush-collapseThree">BUILDINGS</h6><span class="uw-slant"></span><div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group"><button type="button" id="opoku-ware-btn" class="list-group-item list-group-item-action"aria-current="true">Opoku ware hall</button><button type="button" id="opoku-ware-mosqueBtn"class="list-group-item list-group-item-action">Opoku ware mosque</button><button type="button" id="canteen-btn"class="list-group-item list-group-item-action">Canteen</button><button type="button" id="uncom-auditorium-btn"class="list-group-item list-group-item-action">Uncompleted auditorium</button><button type="button" id="autonomy-hall-btn"class="list-group-item list-group-item-action">Autonomy hall</button></div></div></div></div>';
+const buildingsAccordionItem = '<div class="accordion-item"><h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"aria-expanded="false" aria-controls="flush-collapseThree">BUILDINGS</h6><span class="uw-slant"></span><div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group"><button type="button" id="opoku-ware-btn" class="list-group-item list-group-item-action"aria-current="true">Opoku ware hall</button><button type="button" id="opoku-ware-mosqueBtn"class="list-group-item list-group-item-action">Opoku ware mosque</button><button type="button" id="canteen-btn"class="list-group-item list-group-item-action">Canteen</button><button type="button" id="uncom-auditorium-btn"class="list-group-item list-group-item-action">Uncompleted auditorium</button><button type="button" id="autonomy-hall-btn"class="list-group-item list-group-item-action">Autonomy hall</button><button type="button" id="atwima-hall-btn" class="list-group-item list-group-item-action">Atwima hall</button></div></div></div></div>';
 
 // Main Accordion
 const sideMenuAccordion = `
   <div class="accordion accordion-flush" id="accordionFlushExample">
-    ${buildingsAccordionItem}${officesAcordionItem}${accordionItem2}${letureHallsAccordionItem}
+    ${buildingsAccordionItem}${officesAcordionItem}${letureHallsAccordionItem}${hostelsAccordionItem}
   </div>
 `;
 
@@ -162,18 +161,33 @@ var slideMenu = L.control.slideMenu(imageSection + sideMenuAccordion + allLinks 
   height: "800px",
 }).addTo(map);
 
+// opuku ware popupText
+const opokuWarePopupText = 'OpukuWare hall<button type="button" class="btn btn-link" data-bs-toggle="modal"  data-bs-target="#opuku-ware-Modal">View</button>'
+
+//Autonomy hall popuptxt
+const autonomyPopuptxt = 'Autonomy hall<button type="button" class="btn btn-link" data-bs-toggle="modal"  data-bs-target="#autonomy-hall-modal">View</button>';
+
+//ROB popuptxt
+const robPopupTxt = 'ROB <button type="button" class="btn btn-link" data-bs-toggle="modal"  data-bs-target="#ROB-modal">View</button>';
+
+//uncompleted auditorium popupTxt
+const uncompAuditoriumPopupTxt ='Uncompleted auditorium <button type="button" class="btn btn-link" data-bs-toggle="modal"  data-bs-target="#uncompleted-auditorium-modal">View</button>';
+
+//Atwima hall popUptxt
+const atwimahallPopupTxt = 'Atwima hall<button type="button" class="btn btn-link" data-bs-toggle="modal"  data-bs-target="#atwima-hall-mmodal">View</button>';
+
 const coordinatesData = [
   {
     coordinates: [6.69782,-1.68286],
     title: "Opoku ware hall",
     buttonId: 'opoku-ware-btn',
-    popupText: 'Opuku Ware hall <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch demo modal</button>',
+    popupText: opokuWarePopupText,
   },
   {
     coordinates: [6.70049,-1.68230],
     title: "ROB",
     buttonId: 'rob-btn',
-    popupText: card,
+    popupText: robPopupTxt,
   },
   {
     coordinates: [6.69779,-1.68397],
@@ -191,7 +205,7 @@ const coordinatesData = [
     coordinates: [6.69841,-1.68094],
     title: "Uncompleted auditorium",
     buttonId: 'uncom-auditorium-btn',
-    popupText: 'Uncompleted auditorium',
+    popupText: uncompAuditoriumPopupTxt,
   },
   {
     coordinates: [6.69797,-1.68023],
@@ -203,7 +217,7 @@ const coordinatesData = [
     coordinates: [6.70058,-1.67685],
     title: "Autonomy hall",
     buttonId: 'autonomy-hall-btn',
-    popupText: 'Autonomy hall',
+    popupText: autonomyPopuptxt,
   },
   {
     coordinates: [6.69804,-1.68066],
@@ -236,6 +250,12 @@ const coordinatesData = [
     buttonId: 'computer-lab2-btn',
     popupText: 'Computer lab two',
   },
+  {
+    coordinates: [6.69659,-1.67957],
+    title: "Atwima hall",
+    buttonId: 'atwima-hall-btn',
+    popupText: atwimahallPopupTxt,
+  },
   // Add more coordinate sets and button IDs as needed 6.70217,-1.68257
 ];
 
@@ -244,7 +264,7 @@ function setupMarkerAndFly(coordinates, buttonId, speed, popupText) {
   const popup = L.popup({ closeButton: true }).setContent(popupText);
 
   function flyToCoordinates() { 
-    map.flyTo(coordinates, 18, {
+    map.flyTo(coordinates, 19, {
       duration: speed,
     });
     // Find the marker associated with the provided buttonId
@@ -301,7 +321,7 @@ const searchBar = L.control.pinSearch({
       const markerLatLng = firstMatchingMarker.getLatLng();
   
       // Fly to the marker and open its popup
-      map.flyTo(markerLatLng, 18, {
+      map.flyTo(markerLatLng, 19, {
         maxZoom: 19,
         duration: 0.5,
         animate: true,
@@ -316,5 +336,5 @@ const searchBar = L.control.pinSearch({
   
   searchBarWidth: "150px",
   searchBarHeight: "30px",
-  maxSearchResults: 3,
+  maxSearchResults: 5,
 }).addTo(map);
