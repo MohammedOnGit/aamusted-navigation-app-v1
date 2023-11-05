@@ -1,221 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <link
-      rel="stylesheet"
-      href="../node_modules/bootstrap/dist/css/bootstrap.css"
-    />
-    <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
-    <script src="../node_modules/leaflet/dist/leaflet.js"></script>
 
-    <!-- leaflet pin search css -->
-    <link
-      rel="stylesheet"
-      href="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
+  <script src="../node_modules/leaflet/dist/leaflet.js"></script>
 
-    <!-- leaflet routing machine -->
-    <link
-      rel="stylesheet"
-      href="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
-    />
+  <!-- leaflet pin search css -->
+  <link rel="stylesheet" href="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.css" />
 
-    <!-- leaflet slide menu css -->
-    <link
-      rel="stylesheet"
-      href="./node_modules/leaflet-slidemenu/src/L.Control.SlideMenu.css"
-    />
-    <!-- slide menu fonts -->
-    <link
-      rel="stylesheet"
-      href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+  <!-- leaflet routing machine -->
+  <link rel="stylesheet" href="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
 
-    <!-- social css -->
-    <link rel="stylesheet" href="./src/css/social.css" />
+  <!-- leaflet slide menu css -->
+  <link rel="stylesheet" href="./node_modules/leaflet-slidemenu/src/L.Control.SlideMenu.css" />
+  <!-- slide menu fonts -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-    <title>Document</title>
-    <style>
-      body {
-        padding: 0;
-        margin: 0;
-      }
-      html,
-      body,
-      #map {
-        height: 100%;
-        width: 100vw;
-      }
+  <!-- social css -->
+  <link rel="stylesheet" href="./src/css/social.css" />
 
-      .row {
-        display: flex;
-        flex-direction: column;
-      }
-      .container-fluid {
-        background: #ffffff;
-        height: 120px;
-        margin: 5px;
-        width: 95%;
-        border-top-right-radius: 8px;
-        border-top-left-radius: 8px;
-        padding: 1px;
-      }
-
-      .uw-slant,
-      .uw-slant-large {
-        background-color: #eb1717;
-        transform: skew(-25deg, 0);
-        display: block;
-        width: 80%;
-        margin-left: 20px;
-        height: 3px;
-        margin-bottom: 10px;
-        transition: 0.5s;
-        flex-shrink: 0;
-      }
-
-      #title-slant {
-        margin-left: 10%;
-        width: 77%;
-      }
-
-      .uw-slant-large {
-        transform: skew(0deg, 0);
-        margin-left: 20px;
-        width: 70.6%;
-        height: 5px;
-      }
-
-      #title {
-        color: #006938;
-        font-size: 12pt;
-        width: 220px;
-        box-sizing: border-box;
-        margin: 8%;
-        padding-left: 5px;
-        font-weight: 700;
-        font-family: "Castoro", sans-serif;
-        opacity: 1;
-        margin-top: 10px;
-        margin-bottom: 3px;
-        margin-left: 10%;
-      }
-
-      .leaflet-menu {
-        position: absolute;
-        background-color: #8c013c;
-        overflow: auto;
-        cursor: default;
-        z-index: 9999;
-      }
-      .list-group{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        border: none;
-        
-      }
-      .list-group{
-        display: flex;
-        flex-direction: column;
-        margin-top: 0px;
-        padding: 0px;
-        margin-left: 0px;
-        
-       
-      }
-     .list-group-item{
-        font-size: small;
-        margin-left: 0px;
-        padding: 4px;
-       
-       
-      }
-      .list-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    border-radius: 0px;
-    
+  <title>Document</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
     }
-      #terms{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-       
-      }
-    
-      .accordion{
-        width: 100%;
-        margin-left: 0px;
-        padding-left: 10px;
-      
-      }
-      
-      .accordion-body{
-        height: auto;
-        max-height: 90px;
-        overflow-y: visible;
-        overflow-x: hidden;
-        margin: 0px;
-        padding: 0px;
-        margin-left: 20px;
-        
-        width: 80%;
-      }
-      .header {
-        display: block;
-        margin-left: 20px;
-        margin-top: 5px;
-        margin-bottom: 0px;
-        color: #FFFFFF;
-        opacity: 1;
-        font-size: 12pt;
-        font-weight: bold;
-        cursor: pointer;
-        padding: 5px 5px 2px 2px;
-        width: 90%;
-       
 
-        }
-
-        .header:hover {
-          opacity: 0.6;
-          transition: 0.2s;
-        }
-        .accordion-item {
-    background-color: #8C013C;
-    width: 100%;
-    margin-left: 0px;
-    margin-top: 10px;
-    border: none;
-    
-    
+    html,
+    body,
+    #map {
+      height: 100%;
+      width: 100vw;
     }
-       
-        .header {
-            margin-top: 5px;
-          }
-     
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
 
-    <!-- social -->
+    .row {
+      display: flex;
+      flex-direction: column;
+    }
 
-    
-    
+    .container-fluid {
+      background: #ffffff;
+      height: 120px;
+      margin: 5px;
+      width: 95%;
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+      padding: 1px;
+    }
 
-    <!-- <div class="list-group">
+    .uw-slant,
+    .uw-slant-large {
+      background-color: #eb1717;
+      transform: skew(-25deg, 0);
+      display: block;
+      width: 80%;
+      margin-left: 20px;
+      height: 3px;
+      margin-bottom: 10px;
+      transition: 0.5s;
+      flex-shrink: 0;
+    }
+
+    #title-slant {
+      margin-left: 10%;
+      width: 77%;
+    }
+
+    .uw-slant-large {
+      transform: skew(0deg, 0);
+      margin-left: 20px;
+      width: 70.6%;
+      height: 5px;
+    }
+
+    #title {
+      color: #006938;
+      font-size: 12pt;
+      width: 220px;
+      box-sizing: border-box;
+      margin: 8%;
+      padding-left: 5px;
+      font-weight: 700;
+      font-family: "Castoro", sans-serif;
+      opacity: 1;
+      margin-top: 10px;
+      margin-bottom: 3px;
+      margin-left: 10%;
+    }
+
+    .leaflet-menu {
+      position: absolute;
+      background-color: #8c013c;
+      overflow: auto;
+      cursor: default;
+      z-index: 9999;
+    }
+
+    .list-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      border: none;
+    }
+
+    .list-group {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0px;
+      padding: 0px;
+      margin-left: 0px;
+    }
+
+    .list-group-item {
+      font-size: small;
+      margin-left: 0px;
+      padding: 4px;
+    }
+
+    .list-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: flex-start;
+      border-radius: 0px;
+    }
+
+    #terms {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .accordion {
+      width: 100%;
+      margin-left: 0px;
+      padding-left: 10px;
+    }
+
+    .accordion-body {
+      height: auto;
+      max-height: 90px;
+      overflow-y: visible;
+      overflow-x: hidden;
+      margin: 0px;
+      padding: 0px;
+      margin-left: 20px;
+
+      width: 80%;
+    }
+
+    .header {
+      display: block;
+      margin-left: 20px;
+      margin-top: 5px;
+      margin-bottom: 0px;
+      color: #ffffff;
+      opacity: 1;
+      font-size: 12pt;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 5px 5px 2px 2px;
+      width: 90%;
+    }
+
+    .header:hover {
+      opacity: 0.6;
+      transition: 0.2s;
+    }
+
+    .accordion-item {
+      background-color: #8c013c;
+      width: 100%;
+      margin-left: 0px;
+      margin-top: 10px;
+      border: none;
+    }
+
+    .header {
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <!-- social -->
+
+  <!-- <div class="list-group">
       <button   type="button" id="flyToButton1" class="list-group-item list-group-item-action" aria-current="true">
        Opoku ware hall
       </button>
@@ -225,12 +202,12 @@
       <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>
     </div> -->
 
-    <!-- <h6 class="header" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+  <!-- <h6 class="header" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
       BUILDINGS
     </h6>
     <span class="uw-slant"></span> -->
 
-    <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
+  <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
       <div class="accordion-item">
           <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
             LECTURE HALLS
@@ -283,18 +260,125 @@
         </div>
       </div>
     </div>  -->
-    
-    
-    
-    
+<!--  
+  <div class="accordion accordion" id="accordionFlushExample">
+    <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+      aria-expanded="false" aria-controls="flush-collapseOne">
+      LECTURE HALLS
+    </h6>
+    <div class="accordion-item">
+      <span class="uw-slant"></span>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+        data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <div class="list-group">
+            <button type="button" id="rob-btn" class="list-group-item list-group-item-action">
+              ROB</button><!-- new-building-btn --<button type="button" id="new-buildinglh-btn"
+              class="list-group-item list-group-item-action">
+              New building
+            </button>
+            <button type="button" id="NFB-btn" class="list-group-item list-group-item-action">
+              New foculty building
+            </button>
+            <button type="button" id="NLB-btn" class="list-group-item list-group-item-action">
+              New library building
+            </button>
 
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- leaflet pin search js -->
-    <script src="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.js"></script>
-    <script src="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
-    <script src="./node_modules/leaflet-slidemenu/src/L.Control.SlideMenu.js"></script>
+            <button type="button" id="conputer-lab1-btn" class="list-group-item list-group-item-action">
+              Computer lab one
+            </button>
+            <button type="button" id="conputer-lab2-btn" class="list-group-item list-group-item-action">
+              Computer lab two
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script src="./node_modules/@bagage/leaflet.restoreview/leaflet.restoreview.js"></script>
-    <script src="./src/js/map.js"></script>
-  </body>
+
+    <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+        aria-expanded="false" aria-controls="flush-collapseTwo">
+        DEPARTMENTS
+      </h6>
+    <div class="accordion-item">
+      <span class="uw-slant"></span>
+      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+        data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <div class="list-group">
+            <button type="button" id="appliced-science-btn" class="list-group-item list-group-item-action">
+              Dep. of appliced science
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="accordion-item">
+      <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+        aria-expanded="false" aria-controls="flush-collapseThree">
+        BUILDINGS
+      </h6>
+      <span class="uw-slant"></span>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+        data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <div class="list-group">
+            <button type="button" id="opoku-ware-btn" class="list-group-item list-group-item-action"
+              aria-current="true">
+              Opoku ware hall</button><button type="button" id="opoku-ware-mosqueBtn"
+              class="list-group-item list-group-item-action">
+              Opoku ware mosque</button><button type="button" id="canteen-btn"
+              class="list-group-item list-group-item-action">
+              Canteen</button><button type="button" id="uncom-auditorium-btn"
+              class="list-group-item list-group-item-action">
+              Uncompleted auditorium</button><button type="button" id="autonomy-hall-btn"
+              class="list-group-item list-group-item-action">
+              Autonomy hall
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+-->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- leaflet pin search js -->
+  <script src="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.js"></script>
+  <script src="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+  <script src="./node_modules/leaflet-slidemenu/src/L.Control.SlideMenu.js"></script>
+
+  <script src="./node_modules/@bagage/leaflet.restoreview/leaflet.restoreview.js"></script>
+  <script src="./src/js/map.js"></script>
+</body>
+
 </html>
