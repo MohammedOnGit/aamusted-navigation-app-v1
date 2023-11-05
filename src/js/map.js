@@ -60,7 +60,6 @@ handleTileError(esriWorldImageryLayer, "Esri World Imagery");
 window.addEventListener("offline", showOfflineMessage);
 window.addEventListener("online", reloadPage);
 
-
 // Add error handling for other tile layers as needed
 
 const baseMaps = {
@@ -71,8 +70,6 @@ const baseMaps = {
 /* setting the default view to the users current location
 map.locate({setView: true, maxZoom: 16});
 */
-
-
 
 const routingControl = L.Routing.control({
   waypoints: [L.latLng(6.6993, -1.68009), L.latLng(6.70040, -1.68215)],
