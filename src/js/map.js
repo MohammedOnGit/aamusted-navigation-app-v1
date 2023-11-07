@@ -34,8 +34,10 @@ const osmLayer = addTileLayer(
 
 const esriWorldImageryLayer = addTileLayer(
   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-  "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
+  null,
+  "© Esri"
 );
+
 
 // Create a function to display an offline message
 function showOfflineMessage() {
@@ -59,6 +61,17 @@ const baseMaps = {
   "Esri World Imagery": esriWorldImageryLayer,
   OpenStreetMap: osmLayer,
 };
+
+
+  const apiKey = '43ddd296d66e7cc444c5105a82a6abe5';
+      $(function() {
+        L.control.weather({
+          apiKey,
+          lang: "es",
+          units: "metric",
+        }).addTo(map);
+      });
+
 
 // Create a function to handle location errors
 function onLocationError(e) {
@@ -172,7 +185,7 @@ var slideMenu = L.control
   .slideMenu(imageSection + sideMenuAccordion + allLinks + terms, {
     position: "topleft",
     width: "240px",
-    height: "800px",
+    height: "88%",
   })
   .addTo(map);
 
