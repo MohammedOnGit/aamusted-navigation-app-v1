@@ -1,212 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
-  <script src="../node_modules/leaflet/dist/leaflet.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
+    <script src="../node_modules/leaflet/dist/leaflet.js"></script>
 
-  <!-- weather jquery -->
-  <script src="//code.jquery.com/jquery.min.js"></script>
+    <!-- weather jquery -->
+    <script src="//code.jquery.com/jquery.min.js"></script>
 
-  <!-- leaflet pin search css -->
-  <link rel="stylesheet" href="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.css" />
+    <!-- leaflet pin search css -->
+    <link
+      rel="stylesheet"
+      href="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.css"
+    />
 
-  <!-- leaflet routing machine -->
-  <link rel="stylesheet" href="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <!-- leaflet routing machine -->
+    <link
+      rel="stylesheet"
+      href="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
+    />
 
-  <!-- leaflet slide menu css -->
-  <link rel="stylesheet" href="./node_modules/leaflet-slidemenu/src/L.Control.SlideMenu.css" />
-  <!-- slide menu fonts -->
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- leaflet slide menu css -->
+    <link
+      rel="stylesheet"
+      href="./node_modules/leaflet-slidemenu/src/L.Control.SlideMenu.css"
+    />
+    <!-- slide menu fonts -->
+    <link
+      rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
-  <!-- social css -->
-  <link rel="stylesheet" href="./src/css/social.css" />
-  <!-- leaflet locate control -->
-  <link rel="stylesheet" href="./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.css">
+    <!-- social css -->
+    <link rel="stylesheet" href="./src/css/social.css" />
+    <!-- leaflet locate control -->
+    <link
+      rel="stylesheet"
+      href="./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.css"
+    />
 
-  <!-- weather css -->
-  <link rel="stylesheet" href="./src/css/Leaflet.Weather.css">
+    <!-- weather css -->
+    <link rel="stylesheet" href="./src/css/Leaflet.Weather.css" />
+
+    <title>Document</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body,
+      #map {
+        height: 100vh;
+        width: 100%;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container-fluid {
+        background: #ffffff;
+        height: 120px;
+        margin: 5px;
+        width: 95%;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+        padding: 1px;
+      }
+
+      .uw-slant,
+      .uw-slant-large {
+        background-color: #eb1717;
+        transform: skew(-25deg, 0);
+        display: block;
+        width: 80%;
+        margin-left: 20px;
+        height: 3px;
+        margin-bottom: 10px;
+        transition: 0.5s;
+        flex-shrink: 0;
+      }
+
+      #title-slant {
+        margin-left: 10%;
+        width: 77%;
+      }
+
+      .uw-slant-large {
+        transform: skew(0deg, 0);
+        margin-left: 20px;
+        width: 70.6%;
+        height: 5px;
+      }
+
+      #title {
+        color: #006938;
+        font-size: 12pt;
+        width: 220px;
+        box-sizing: border-box;
+        margin: 8%;
+        padding-left: 5px;
+        font-weight: 700;
+        font-family: "Castoro", sans-serif;
+        opacity: 1;
+        margin-top: 10px;
+        margin-bottom: 3px;
+        margin-left: 10%;
+      }
+
+      .leaflet-menu {
+        position: absolute;
+        background-color: #8c013c;
+        overflow: auto;
+        cursor: default;
+        z-index: 9999;
+      }
+
+      .list-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        border: none;
+      }
+
+      .list-group {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0px;
+        padding: 0px;
+        margin-left: 0px;
+      }
+
+      .list-group-item {
+        font-size: small;
+        margin-left: 0px;
+        padding: 4px;
+      }
+
+      .list-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        border-radius: 0px;
+      }
+
+      #terms {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .accordion {
+        width: 100%;
+        margin-left: 0px;
+        padding-left: 10px;
+      }
+
+      .accordion-body {
+        height: auto;
+        max-height: 90px;
+        overflow-y: visible;
+        overflow-x: hidden;
+        margin: 0px;
+        padding: 0px;
+        margin-left: 20px;
+
+        width: 80%;
+      }
+
+      .header {
+        display: block;
+        margin-left: 20px;
+        margin-top: 5px;
+        margin-bottom: 0px;
+        color: #ffffff;
+        opacity: 1;
+        font-size: 12pt;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 5px 5px 2px 2px;
+        width: 90%;
+      }
+
+      .header:hover {
+        opacity: 0.6;
+        transition: 0.2s;
+      }
+
+      .accordion-item {
+        background-color: #8c013c;
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 10px;
+        border: none;
+      }
+
+      .header {
+        margin-top: 5px;
+      }
+
+      .btn btn-link {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+
   
-
-  <title>Document</title>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-    }
-
-    html,
-    body,
-    #map {
-      height: 100vh;
-      width: 100%;
-    }
-
-    .row {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container-fluid {
-      background: #ffffff;
-      height: 120px;
-      margin: 5px;
-      width: 95%;
-      border-top-right-radius: 8px;
-      border-top-left-radius: 8px;
-      padding: 1px;
-    }
-
-    .uw-slant,
-    .uw-slant-large {
-      background-color: #eb1717;
-      transform: skew(-25deg, 0);
-      display: block;
-      width: 80%;
-      margin-left: 20px;
-      height: 3px;
-      margin-bottom: 10px;
-      transition: 0.5s;
-      flex-shrink: 0;
-    }
-
-    #title-slant {
-      margin-left: 10%;
-      width: 77%;
-    }
-
-    .uw-slant-large {
-      transform: skew(0deg, 0);
-      margin-left: 20px;
-      width: 70.6%;
-      height: 5px;
-    }
-
-    #title {
-      color: #006938;
-      font-size: 12pt;
-      width: 220px;
-      box-sizing: border-box;
-      margin: 8%;
-      padding-left: 5px;
-      font-weight: 700;
-      font-family: "Castoro", sans-serif;
-      opacity: 1;
-      margin-top: 10px;
-      margin-bottom: 3px;
-      margin-left: 10%;
-    }
-
-    .leaflet-menu {
-      position: absolute;
-      background-color: #8c013c;
-      overflow: auto;
-      cursor: default;
-      z-index: 9999;
-    }
-
-    .list-group {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      border: none;
-    }
-
-    .list-group {
-      display: flex;
-      flex-direction: column;
-      margin-top: 0px;
-      padding: 0px;
-      margin-left: 0px;
-    }
-
-    .list-group-item {
-      font-size: small;
-      margin-left: 0px;
-      padding: 4px;
-    }
-
-    .list-group {
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-      align-items: flex-start;
-      border-radius: 0px;
-    }
-
-    #terms {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .accordion {
-      width: 100%;
-      margin-left: 0px;
-      padding-left: 10px;
-    }
-
-    .accordion-body {
-      height: auto;
-      max-height: 90px;
-      overflow-y: visible;
-      overflow-x: hidden;
-      margin: 0px;
-      padding: 0px;
-      margin-left: 20px;
-
-      width: 80%;
-    }
-
-    .header {
-      display: block;
-      margin-left: 20px;
-      margin-top: 5px;
-      margin-bottom: 0px;
-      color: #ffffff;
-      opacity: 1;
-      font-size: 12pt;
-      font-weight: bold;
-      cursor: pointer;
-      padding: 5px 5px 2px 2px;
-      width: 90%;
-    }
-
-    .header:hover {
-      opacity: 0.6;
-      transition: 0.2s;
-    }
-
-    .accordion-item {
-      background-color: #8c013c;
-      width: 100%;
-      margin-left: 0px;
-      margin-top: 10px;
-      border: none;
-    }
-
-    .header {
-      margin-top: 5px;
-    }
-
-
-    .btn btn-link{
-      margin: 0px;
-      padding: 0px;
-    }
-  </style>
-</head>
-
-<body>
-  <div id="map"></div>
-
-   
-
-  <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
+    <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
 
     <!-- <div class="accordion accordion-flush" id="accordionFlushExample">> slide-menu
       <div class="accordion-item">
@@ -262,7 +280,7 @@
       </div>
     </div>  -->
 
-<!--  
+    <!--  
   <div class="accordion accordion" id="accordionFlushExample">
     <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
       aria-expanded="false" aria-controls="flush-collapseOne">
@@ -346,138 +364,221 @@
     </div>
   </div>
 -->
-<!-- bootstrap alert -->
-<!-- Bootstrap Alert -->
-<!-- <div class="alert alert-danger" role="alert" id="locationErrorAlert" style="display: none;">
+    <!-- bootstrap alert -->
+    <!-- Bootstrap Alert -->
+    <!-- <div class="alert alert-danger" role="alert" id="locationErrorAlert" style="display: none;">
   <!-- Error message will be inserted here using JavaScript --
 </div> -->
 
-
-
-<!-- Opoku ware Modal -->
-<div class="modal fade" id="opuku-ware-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Opoku ware hall</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card" style="width: 100%;">
-          <img src="./src/img/Opoku_Ware_Hall.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!-- Opoku ware Modal -->
+    <div
+      class="modal fade"
+      id="opuku-ware-Modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Opoku ware hall</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/Opoku_Ware_Hall.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- autonomy hall modal -->
-<div class="modal fade" id="autonomy-hall-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Autonomy Hall</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card" style="width: 100%;">
-          <img src="./src/img/autonomy_hall.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!-- autonomy hall modal -->
+    <div
+      class="modal fade"
+      id="autonomy-hall-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Autonomy Hall</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/autonomy_hall.jpeg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!--ROB modal -->
-<div class="modal fade" id="ROB-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">ROB</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card" style="width: 100%;">
-          <img src="./src/img/ROB.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!--ROB modal -->
+    <div
+      class="modal fade"
+      id="ROB-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ROB</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img src="./src/img/ROB.jpeg" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!--Uncompleted auditotrium Modal modal -->
-<div class="modal fade" id="uncompleted-auditorium-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Uncompleted auditorium</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card" style="width: 100%;">
-          <img src="./src/img/uncompleted_building.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!--Uncompleted auditotrium Modal modal -->
+    <div
+      class="modal fade"
+      id="uncompleted-auditorium-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Uncompleted auditorium
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/uncompleted_building.jpeg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!--Atwima hall modal -->
-<div class="modal fade" id="atwima-hall-mmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Atwima hall</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card" style="width: 100%;">
-          <img src="./src/img/Atwima_Hall.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!--Atwima hall modal -->
+    <div
+      class="modal fade"
+      id="atwima-hall-mmodal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Atwima hall</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/Atwima_Hall.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- leaflet pin search js -->
-  <script src="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.js"></script>
-  <script src="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
-  <script src="./node_modules/leaflet-slidemenu/src/L.Control.SlideMenu.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- leaflet pin search js -->
+    <script src="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.js"></script>
+    <script src="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+    <script src="./node_modules/leaflet-slidemenu/src/L.Control.SlideMenu.js"></script>
 
-  <script src="./node_modules/@bagage/leaflet.restoreview/leaflet.restoreview.js"></script>
+    <script src="./node_modules/@bagage/leaflet.restoreview/leaflet.restoreview.js"></script>
 
-  <script src="./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+    <script src="./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
 
-  <!-- leaflet weather script -->
-  <script src="./src/js/Leaflet.Weather.js"></script>
-  <script src="./src/js/map.js"></script>
-</body>
+    <!-- leaflet weather script -->
+    <script src="./src/js/Leaflet.Weather.js"></script>
+    <script src="./src/js/map.js"></script>
+  </body>
 </html>
-
-   
-
