@@ -1,3 +1,6 @@
+"use strict"; 
+// Your JavaScript code here
+
 // Create a Leaflet map
 const map = L.map("map", {
   center: [6.7004, -1.6811],
@@ -5,7 +8,7 @@ const map = L.map("map", {
   zoomControl: false,
 });
 
-// Create a reusable function for adding tile layers
+// Reusable function for adding tile layers
 function addTileLayer(url, attribution) {
   return L.tileLayer(url, { attribution, maxZoom: 19 }).addTo(map);
 }
@@ -13,15 +16,11 @@ function addTileLayer(url, attribution) {
 // Handle tile layer errors
 function handleTileError(layer) {
   layer.on("tileerror", function (e) {
-    console.error(
-      `Error loading ${layer.options.attribution} tile:`,
-      e.error.target.src
-    );
-    const userChoice = window.confirm(
-      `Error loading ${layer.options.attribution} tiles. Do you want to reload the page?`
-    );
+    const attribution = layer.options.attribution;
+    console.error(`Error loading ${attribution} tile:`, e.error.target.src);
+    const userChoice = window.confirm(`Error loading ${attribution} tiles. Do you want to reload the page?`);
     if (userChoice) {
-      window.location.reload(); // Reload the page
+      reloadPage(); // Reload the page
     }
   });
 }
@@ -34,25 +33,69 @@ const osmLayer = addTileLayer(
 
 const esriWorldImageryLayer = addTileLayer(
   "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-  null,
   "© Esri"
 );
 
-// Create a function to display an offline message
-function showOfflineMessage() {
-  alert(
-    "You are currently offline. Please check your internet connection and try again."
-  );
+
+function showOfflineAlert() {
+  // Show the Bootstrap alert
+  const alertElement = document.getElementById('offline-alert');
+  alertElement.style.display = 'block';
+
+  // Set a timeout to hide the alert after 2000 milliseconds (2 seconds)
+  setTimeout(function() {
+    // Hide the alert
+    alertElement.style.display = 'none';
+  }, 5000);
+}
+// Event listener for when the document is ready
+document.addEventListener("DOMContentLoaded", function () {
+  // Listen for online and offline events
+  window.addEventListener("offline", showOfflineAlert);
+});
+
+
+// Function to display an online message
+function showOnlineAlert() {
+  // Show the Bootstrap alert
+  const alertElement = document.getElementById('online-alert');
+  alertElement.style.display = 'block';
+
+  // Set a timeout to hide the alert after 2000 milliseconds (2 seconds)
+  setTimeout(function() {
+    // Hide the alert
+    alertElement.style.display = 'none';
+  }, 5000);
 }
 
-// Create a function to reload the page
+
+
+// Function to reload the page
 function reloadPage() {
-  window.location.reload();
+
+  setTimeout(function() {
+    // Reload the page
+    window.location.reload();
+  }, 5000); 
+  
 }
 
 // Listen for online and offline events
-window.addEventListener("offline", showOfflineMessage);
-window.addEventListener("online", reloadPage);
+window.addEventListener("offline", showOfflineAlert);
+
+// Listen for online and offline events
+window.addEventListener("online", function () {
+  // Show online message after a delay
+  setTimeout(function() {
+    showOnlineAlert();
+    // Reload the page
+    reloadPage();
+   
+  }, 3000); // Adjust the delay time as needed
+});
+
+
+
 
 // Add error handling for other tile layers as needed
 
@@ -86,7 +129,7 @@ const locateControl = L.control
     drawMarker: true,
     onLocationError: onLocationError, // Pass the error handler function here
     locateOptions: {
-      enableHighAccuracy: true,
+    enableHighAccuracy: true,
     },
   })
   .addTo(map);
@@ -346,6 +389,7 @@ coordinatesData.forEach(function (data) {
 const searchBar = L.control
   .pinSearch({
     position: "topright",
+  
     placeholder: "Search...",
     buttonText: "Search",
     onSearch: function (query) {

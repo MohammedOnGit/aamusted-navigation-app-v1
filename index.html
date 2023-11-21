@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link
       rel="stylesheet"
       href="../node_modules/bootstrap/dist/css/bootstrap.css"
@@ -22,7 +19,7 @@
       href="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.css"
     />
 
-    <!-- leaflet routing machine -->
+    <!-- leaflet routing machine --> 
     <link
       rel="stylesheet"
       href="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
@@ -38,6 +35,10 @@
       rel="stylesheet"
       href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Serif:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- social css -->
     <link rel="stylesheet" href="./src/css/social.css" />
@@ -50,7 +51,7 @@
     <!-- weather css -->
     <link rel="stylesheet" href="./src/css/Leaflet.Weather.css" />
 
-    <title>Document</title>
+    <title>Aamusted Navigation</title>
     <style>
       body {
         padding: 0;
@@ -60,8 +61,13 @@
       html,
       body,
       #map {
+        margin-top: 0px;
+        font-family: 'Roboto Serif', serif;
         height: 100vh;
         width: 100%;
+      }
+      #map{
+        position: relative;
       }
 
       .row {
@@ -217,159 +223,32 @@
         margin: 0px;
         padding: 0px;
       }
+      #online-alert, #offline-alert{
+        position: absolute;
+        top: 94%;
+        left: 15%;
+        z-index: 9999;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 270px;
+        justify-content: center;
+        align-items: center;
+        display: none;
+      }
     </style>
   </head>
-
   <body>
+
+    <!-- online alert -->
+    <div class="alert alert-success" role="alert" id="online-alert" >
+      You connectio was restored!
+    </div>
+    
+    <div class="alert alert-danger" role="alert" id="offline-alert">
+      You are currently offline! 
+    </div>
     <div id="map"></div>
-
-  
-    <!-- <div class="accordion accordion-flush" id="accordionFlushExample">
-
-    <!-- <div class="accordion accordion-flush" id="accordionFlushExample">> slide-menu
-      <div class="accordion-item">
-          <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-            LECTURE HALLS
-          </h6>
-          <span class="uw-slant"></span>
-        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <div class="list-group">
-             
-        <button type="button" id="rob-btn" class="list-group-item list-group-item-action">ROB</button>
-         !-- new-building-btn --
-         <button type="button" id="new-buildinglh-btn"  class="list-group-item list-group-item-action">New building</button>
-        </div>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-          <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-         DEPARTMENTS
-          </h6>
-          <span class="uw-slant"></span>
-        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <div class="list-group">
-                        <!-- autonomy hall btn --
-                  <button type="button" id="appliced-science-btn"        class="list-group-item list-group-item-action">Department of appliced science</button>
-              </div>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-          <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          BUILDINGS
-          </H6>
-          <span class="uw-slant"></span>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <div class="list-group">
-              <!-- Opoku ware btn --
-        <button   type="button" id="opoku-ware-btn" class="list-group-item list-group-item-action" aria-current="true">
-        Opoku ware hall
-        </button>
-        <button type="button" id="opoku-ware-mosqueBtn" class="list-group-item list-group-item-action">Opoku ware mosque</button>
-        <button type="button" id="canteen-btn" class="list-group-item list-group-item-action">Canteen</button>
-        <button type="button" id="uncom-auditorium-btn"  class="list-group-item list-group-item-action">Uncompleted auditorium</button>
-        !-- autonomy hall btn --
-        <button type="button" id="autonomy-hall-btn"  class="list-group-item list-group-item-action">Autonomy hall</button>
-      </div>
-          </div>
-        </div>
-      </div>
-    </div>  -->
-
-    <!--  
-  <div class="accordion accordion" id="accordionFlushExample">
-    <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-      aria-expanded="false" aria-controls="flush-collapseOne">
-      LECTURE HALLS
-    </h6>
-    <div class="accordion-item">
-      <span class="uw-slant"></span>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-        data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-          <div class="list-group">
-            <button type="button" id="rob-btn" class="list-group-item list-group-item-action">
-              ROB</button><!-- new-building-btn --<button type="button" id="new-buildinglh-btn"
-              class="list-group-item list-group-item-action">
-              New building
-            </button>
-            <button type="button" id="NFB-btn" class="list-group-item list-group-item-action">
-              New foculty building
-            </button>
-
-            <button type="button" id="atwima-hall-btn" class="list-group-item list-group-item-action">
-              Atwima hall
-            </button>
-
-            <button type="button" id="conputer-lab1-btn" class="list-group-item list-group-item-action">
-              Computer lab one
-            </button>
-            <button type="button" id="conputer-lab2-btn" class="list-group-item list-group-item-action">
-              Computer lab two
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-        aria-expanded="false" aria-controls="flush-collapseTwo">
-        DEPARTMENTS
-      </h6>
-    <div class="accordion-item">
-      <span class="uw-slant"></span>
-      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-        data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-          <div class="list-group">
-            <button type="button" id="appliced-science-btn" class="list-group-item list-group-item-action">
-              Dep. of appliced science
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="accordion-item">
-      <h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-        aria-expanded="false" aria-controls="flush-collapseThree">
-        BUILDINGS
-      </h6>
-      <span class="uw-slant"></span>
-      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
-        data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-          <div class="list-group">
-            <button type="button" id="opoku-ware-btn" class="list-group-item list-group-item-action"
-              aria-current="true">
-              Opoku ware hall</button><button type="button" id="opoku-ware-mosqueBtn"
-              class="list-group-item list-group-item-action">
-              Opoku ware mosque</button><button type="button" id="canteen-btn"
-              class="list-group-item list-group-item-action">
-              Canteen</button><button type="button" id="uncom-auditorium-btn"
-              class="list-group-item list-group-item-action">
-              Uncompleted auditorium</button><button type="button" id="autonomy-hall-btn"
-              class="list-group-item list-group-item-action">
-              Autonomy hall
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
--->
-    <!-- bootstrap alert -->
-    <!-- Bootstrap Alert -->
-    <!-- <div class="alert alert-danger" role="alert" id="locationErrorAlert" style="display: none;">
-  <!-- Error message will be inserted here using JavaScript --
-</div> -->
-
+    
     <!-- Opoku ware Modal -->
     <div
       class="modal fade"

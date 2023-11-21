@@ -1,3 +1,5 @@
 {
-                  "aws.telemetry": false
+                  "aws.telemetry": false,
+                  "liveServer.settings.CustomBrowser": "chrome",
+                  "liveServer.settings.NoBrowser": false
 }
