@@ -1,10 +1,9 @@
-"use strict"; 
-// Your JavaScript code here
+"use strict";
 
 // Create a Leaflet map
 const map = L.map("map", {
   center: [6.7004, -1.6811],
-  zoom: 10,
+  zoom: 1,
   zoomControl: false,
 });
 
@@ -68,8 +67,6 @@ function showOnlineAlert() {
   }, 5000);
 }
 
-
-
 // Function to reload the page
 function reloadPage() {
 
@@ -93,9 +90,6 @@ window.addEventListener("online", function () {
    
   }, 3000); // Adjust the delay time as needed
 });
-
-
-
 
 // Add error handling for other tile layers as needed
 

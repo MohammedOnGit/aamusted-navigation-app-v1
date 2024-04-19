@@ -1,5 +1,6 @@
 {
                   "aws.telemetry": false,
                   "liveServer.settings.CustomBrowser": "chrome",
-                  "liveServer.settings.NoBrowser": false
+                  "liveServer.settings.NoBrowser": false,
+                  "git.ignoreLimitWarning": true
 }

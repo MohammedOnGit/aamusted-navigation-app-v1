@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <link
       rel="stylesheet"
       href="../node_modules/bootstrap/dist/css/bootstrap.css"
@@ -19,7 +22,7 @@
       href="./node_modules/leaflet.pinsearch/src/Leaflet.PinSearch.css"
     />
 
-    <!-- leaflet routing machine --> 
+    <!-- leaflet routing machine -->
     <link
       rel="stylesheet"
       href="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
@@ -36,9 +39,12 @@
       href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Serif:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Serif:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- social css -->
     <link rel="stylesheet" href="./src/css/social.css" />
@@ -62,11 +68,11 @@
       body,
       #map {
         margin-top: 0px;
-        font-family: 'Roboto Serif', serif;
+        font-family: "Roboto Serif", serif;
         height: 100vh;
         width: 100%;
       }
-      #map{
+      #map {
         position: relative;
       }
 
@@ -223,7 +229,8 @@
         margin: 0px;
         padding: 0px;
       }
-      #online-alert, #offline-alert{
+      #online-alert,
+      #offline-alert {
         position: absolute;
         top: 94%;
         left: 15%;
@@ -238,17 +245,16 @@
     </style>
   </head>
   <body>
-
     <!-- online alert -->
-    <div class="alert alert-success" role="alert" id="online-alert" >
-      You connectio was restored!
+    <div class="alert alert-success" role="alert" id="online-alert">
+      Your connection was restored!
     </div>
-    
+
     <div class="alert alert-danger" role="alert" id="offline-alert">
-      You are currently offline! 
+      You are currently offline!
     </div>
     <div id="map"></div>
-    
+
     <!-- Opoku ware Modal -->
     <div
       class="modal fade"
