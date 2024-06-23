@@ -198,7 +198,7 @@ const officesAcordionItem =
 //accordion item 2
 
 const hostelsAccordionItem =
-  ' <h2 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">HOSTELS</h2><span class="uw-slant"></span><div class="accordion-item"><div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group"><button type="button" class="list-group-item list-group-item-action" aria-current="true">The current button</button><button type="button" class="list-group-item list-group-item-action">A second item</button><button type="button" class="list-group-item list-group-item-action">A third button item</button><button type="button" class="list-group-item list-group-item-action">A fourth button item</button><button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button></div></div></div></div>';
+  '<h2 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">HOSTELS</h2><span class="uw-slant"></span><div class="accordion-item"><div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group"><button type="button" class="list-group-item list-group-item-action" aria-current="true">The current button</button><button type="button" class="list-group-item list-group-item-action">A second item</button><button type="button" class="list-group-item list-group-item-action">A third button item</button><button type="button" class="list-group-item list-group-item-action">A fourth button item</button><button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button></div></div></div></div>';
 
 // Lecture Halls Accordion item
 const letureHallsAccordionItem =
@@ -248,6 +248,10 @@ const uncompAuditoriumPopupTxt =
 //Atwima hall popUptxt
 const atwimahallPopupTxt =
   'Atwima hall<button type="button" class="btn btn-link" data-bs-toggle="modal"  data-bs-target="#atwima-hall-mmodal">View</button>';
+
+  //St Williams popUpTxt
+const stWilliamsChaplaincyPopupTxt =
+'St Williams Chaplaincy<button type="button" class="btn btn-link" data-bs-toggle="modal"  data-bs-target="#st-williams-chaplaincy-mmodal">View</button>';
 
 const coordinatesData = [
   {
@@ -329,6 +333,15 @@ const coordinatesData = [
     buttonId: "atwima-hall-btn",
     popupText: atwimahallPopupTxt,
   },
+
+  {
+    coordinates: [6.70181,-1.67666],
+    title: "St Williams Chaplaincy",
+    buttonId: "atwima-hall-btn",
+    popupText: stWilliamsChaplaincyPopupTxt,
+  },
+
+
   // Add more coordinate sets and button IDs as needed 6.70217,-1.68257
 ];
 
