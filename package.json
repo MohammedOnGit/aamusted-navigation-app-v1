@@ -13,7 +13,7 @@
     "leaflet.pinsearch": "^1.0.4"
   },
   "scripts": {
-    "start": "open index.html",
+    "start": "start index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ibrahim Mohammed",

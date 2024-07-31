@@ -138,30 +138,36 @@ const createButton = (label, container) => {
   const btn = L.DomUtil.create("button", "", container);
   btn.setAttribute("type", "button");
   btn.innerHTML = label;
+  // btn.style.border = "2px solid red";  // Add this line to set the red border
+  btn.style.margin = "3px 0"; 
+  btn.style.borderRadius = "10px"
   return btn;
 };
 
+let clickCount = 0;
+
 map.on("click", function (e) {
   const container = L.DomUtil.create("div");
-  const startBtn = createButton("Start from this location", container);
-  const destBtn = createButton("Go to this location", container);
-
+  container.style.display = "flex";
+  container.style.flexDirection = "column"; // Corrected to "column"
+  
+  if (clickCount % 2 === 0) {
+    const startBtn = createButton("Start from this location", container);
+    L.DomEvent.on(startBtn, "click", function () {
+      routingControl.spliceWaypoints(0, 1, e.latlng);
+      map.closePopup();
+    });
+  } else {
+    const destBtn = createButton("Go to this location", container);
+    L.DomEvent.on(destBtn, "click", function () {
+      routingControl.spliceWaypoints(routingControl.getWaypoints().length - 1, 1, e.latlng);
+      map.closePopup();
+    });
+  }
   L.popup().setContent(container).setLatLng(e.latlng).openOn(map);
-
-  L.DomEvent.on(startBtn, "click", function () {
-    routingControl.spliceWaypoints(0, 1, e.latlng);
-    map.closePopup();
-  });
-
-  L.DomEvent.on(destBtn, "click", function () {
-    routingControl.spliceWaypoints(
-      routingControl.getWaypoints().length - 1,
-      1,
-      e.latlng
-    );
-    map.closePopup();
-  });
+  clickCount++;
 });
+
 
 const layerControl = L.control.layers(baseMaps).addTo(map);
 

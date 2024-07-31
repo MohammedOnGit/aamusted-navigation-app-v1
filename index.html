@@ -46,9 +46,6 @@
       rel="stylesheet"
     />
 
-
-
-
     <!-- social css -->
     <link rel="stylesheet" href="./src/css/social.css" />
     <!-- leaflet locate control -->
@@ -56,198 +53,12 @@
       rel="stylesheet"
       href="./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.css"
     />
-
+     <link rel="stylesheet" href="./src/css/main.css">
     <!-- weather css -->
     <link rel="stylesheet" href="./src/css/Leaflet.Weather.css" />
 
     <title>Aamusted Navigation</title>
-    <style>
-      body {
-        padding: 0;
-        margin: 0;
-      }
-
-      html,
-      body,
-      #map {
-        margin-top: 0px;
-        font-family: "Roboto Serif", serif;
-        height: 100vh;
-        width: 100%;
-      }
-      #map {
-        position: relative;
-      }
-
-      .row {
-        display: flex;
-        flex-direction: column;
-      }
-
-
-
-      .container-fluid {
-        background: #ffffff;
-        height: 120px;
-        margin: 5px;
-        width: 95%;
-        border-top-right-radius: 8px;
-        border-top-left-radius: 8px;
-        padding: 1px;
-      }
-
-      .uw-slant,
-      .uw-slant-large {
-        background-color: #eb1717;
-        transform: skew(-25deg, 0);
-        display: block;
-        width: 80%;
-        margin-left: 20px;
-        height: 3px;
-        margin-bottom: 10px;
-        transition: 0.5s;
-        flex-shrink: 0;
-      }
-
-      #title-slant {
-        margin-left: 10%;
-        width: 77%;
-      }
-
-      .uw-slant-large {
-        transform: skew(0deg, 0);
-        margin-left: 20px;
-        width: 70.6%;
-        height: 5px;
-      }
-
-      #title {
-        color: #006938;
-        font-size: 12pt;
-        width: 220px;
-        box-sizing: border-box;
-        margin: 8%;
-        padding-left: 5px;
-        font-weight: 700;
-        font-family: "Castoro", sans-serif;
-        opacity: 1;
-        margin-top: 10px;
-        margin-bottom: 3px;
-        margin-left: 10%;
-      }
-
-      .leaflet-menu {
-        position: absolute;
-        background-color: #8c013c;
-        overflow: auto;
-        cursor: default;
-        z-index: 9999;
-      }
-
-      .list-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        border: none;
-      }
-
-      .list-group {
-        display: flex;
-        flex-direction: column;
-        margin-top: 0px;
-        padding: 0px;
-        margin-left: 0px;
-      }
-
-      .list-group-item {
-        font-size: small;
-        margin-left: 0px;
-        padding: 4px;
-      }
-
-      .list-group {
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        align-items: flex-start;
-        border-radius: 0px;
-      }
-
-      #terms {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .accordion {
-        width: 100%;
-        margin-left: 0px;
-        padding-left: 10px;
-      }
-
-      .accordion-body {
-        height: auto;
-        max-height: 90px;
-        overflow-y: visible;
-        overflow-x: hidden;
-        margin: 0px;
-        padding: 0px;
-        margin-left: 20px;
-
-        width: 80%;
-      }
-
-      .header {
-        display: block;
-        margin-left: 20px;
-        margin-top: 5px;
-        margin-bottom: 0px;
-        color: #ffffff;
-        opacity: 1;
-        font-size: 12pt;
-        font-weight: bold;
-        cursor: pointer;
-        padding: 5px 5px 2px 2px;
-        width: 90%;
-      }
-
-      .header:hover {
-        opacity: 0.6;
-        transition: 0.2s;
-      }
-
-      .accordion-item {
-        background-color: #8c013c;
-        width: 100%;
-        margin-left: 0px;
-        margin-top: 10px;
-        border: none;
-      }
-
-      .header {
-        margin-top: 5px;
-      }
-
-      .btn btn-link {
-        margin: 0px;
-        padding: 0px;
-      }
-      #online-alert,
-      #offline-alert {
-        position: absolute;
-        top: 94%;
-        left: 15%;
-        z-index: 9999;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        width: 270px;
-        justify-content: center;
-        align-items: center;
-        display: none;
-      }
-    </style>
+   
   </head>
   <body>
     <!-- online alert -->
@@ -261,33 +72,35 @@
 
     <div id="map"></div>
 
-     <!--Nana banahene Modal -->
-     <div
-     class="modal fade"
-     id="nana-banahene-modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Nana Banahene Study Pavilion</h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/nana banahene memorial study pavilion.JPG"
-               class="card-img-top"
-               alt="..."
-             />
-             <!-- <div class="card-body">
+    <!--Nana banahene Modal -->
+    <div
+      class="modal fade"
+      id="nana-banahene-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Nana Banahene Study Pavilion
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/nana banahene memorial study pavilion.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
                <h5 class="card-title">Card title</h5>
                <p class="card-text">
                  Some quick example text to build on the card title and make up
@@ -295,39 +108,41 @@
                </p>
                <a href="#" class="btn btn-primary">Go somewhere</a>
              </div> -->
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-       <!--Nana banahene Modal -->
-       <div
-       class="modal fade"
-       id="faculty-of-technical-modal"
-       tabindex="-1"
-       aria-labelledby="exampleModalLabel"
-       aria-hidden="true"
-     >
-       <div class="modal-dialog">
-         <div class="modal-content">
-           <div class="modal-header">
-             <h5 class="modal-title" id="exampleModalLabel">Faculty of Technical Education</h5>
-             <button
-               type="button"
-               class="btn-close"
-               data-bs-dismiss="modal"
-               aria-label="Close"
-             ></button>
-           </div>
-           <div class="modal-body">
-             <div class="card" style="width: 100%">
-               <img
-                 src="./src/img/faculty_of_technical_educatio.JPG"
-                 class="card-img-top"
-                 alt="..."
-               />
-               <!-- <div class="card-body">
+    <!--Nana banahene Modal -->
+    <div
+      class="modal fade"
+      id="faculty-of-technical-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Faculty of Technical Education
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/faculty_of_technical_educatio.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
                  <h5 class="card-title">Card title</h5>
                  <p class="card-text">
                    Some quick example text to build on the card title and make up
@@ -335,39 +150,39 @@
                  </p>
                  <a href="#" class="btn btn-primary">Go somewhere</a>
                </div> -->
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-     <!--administration Modal -->
-     <div
-     class="modal fade"
-     id="administration-modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Adminstration</h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/adminstration.jpg"
-               class="card-img-top"
-               alt="..."
-             />
-             <!-- <div class="card-body">
+    <!--administration Modal -->
+    <div
+      class="modal fade"
+      id="administration-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adminstration</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/adminstration.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
                <h5 class="card-title">Card title</h5>
                <p class="card-text">
                  Some quick example text to build on the card title and make up
@@ -375,14 +190,14 @@
                </p>
                <a href="#" class="btn btn-primary">Go somewhere</a>
              </div> -->
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <!--Account office Modal -->
-      <div
+    <!--Account office Modal -->
+    <div
       class="modal fade"
       id="account-office-modal"
       tabindex="-1"
@@ -392,7 +207,9 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Faculty of Technical Education</h5>
+            <h5 class="modal-title" id="exampleModalLabel">
+              Faculty of Technical Education
+            </h5>
             <button
               type="button"
               class="btn-close"
@@ -421,33 +238,35 @@
       </div>
     </div>
 
-     <!--Dean FTE office Modal -->
-     <div
-     class="modal fade"
-     id="dean-FTE-modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Dean(Faculty of Technical Edu.)</h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/faculty_of_technical_educatio.JPG"
-               class="card-img-top"
-               alt="..."
-             />
-             <!-- <div class="card-body">
+    <!--Dean FTE office Modal -->
+    <div
+      class="modal fade"
+      id="dean-FTE-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Dean(Faculty of Technical Edu.)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/faculty_of_technical_educatio.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
                <h5 class="card-title">Card title</h5>
                <p class="card-text">
                  Some quick example text to build on the card title and make up
@@ -455,39 +274,41 @@
                </p>
                <a href="#" class="btn btn-primary">Go somewhere</a>
              </div> -->
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!--Hosptality department Modal -->
     <div
-    class="modal fade"
-    id="hospitality-dep-modal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Hosptality department</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div class="card" style="width: 100%">
-            <img
-              src="./src/img/hospitality_dep.JPG"
-              class="card-img-top"
-              alt="..."
-            />
-            <!-- <div class="card-body">
+      class="modal fade"
+      id="hospitality-dep-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Hosptality department
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/hospitality_dep.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 Some quick example text to build on the card title and make up
@@ -495,11 +316,11 @@
               </p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div> -->
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
     <!-- Opoku ware Modal -->
     <div
@@ -541,33 +362,35 @@
       </div>
     </div>
 
-     <!-- Opoku ware Modal -->
-     <div
-     class="modal fade"
-     id="fasme-modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Faculty of Applied Science and Mathematics Education(FASME)</h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/FACULTY_OF_SCIENCE_AND_MATHEMATICS_EDUCATION (FASME).JPG"
-               class="card-img-top"
-               alt="..."
-             />
-             <!-- <div class="card-body">
+    <!-- Opoku ware Modal -->
+    <div
+      class="modal fade"
+      id="fasme-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Faculty of Applied Science and Mathematics Education(FASME)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/FACULTY_OF_SCIENCE_AND_MATHEMATICS_EDUCATION (FASME).JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
                <h5 class="card-title">Card title</h5>
                <p class="card-text">
                  Some quick example text to build on the card title and make up
@@ -575,39 +398,41 @@
                </p>
                <a href="#" class="btn btn-primary">Go somewhere</a>
              </div> -->
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-     <!-- hospitality-modal Modal -->
-     <div
-     class="modal fade"
-     id="hospitality-modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Tourism and hospitality</h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/hospitality_tourism_lab.JPG"
-               class="card-img-top"
-               alt="..."
-             />
-             <!-- <div class="card-body">
+    <!-- hospitality-modal Modal -->
+    <div
+      class="modal fade"
+      id="hospitality-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Tourism and hospitality
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/hospitality_tourism_lab.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
                <h5 class="card-title">Card title</h5>
                <p class="card-text">
                  Some quick example text to build on the card title and make up
@@ -615,11 +440,11 @@
                </p>
                <a href="#" class="btn btn-primary">Go somewhere</a>
              </div> -->
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- mechanical workshop Modal -->
     <div
@@ -632,7 +457,9 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Mechanical workshop</h5>
+            <h5 class="modal-title" id="exampleModalLabel">
+              Mechanical workshop
+            </h5>
             <button
               type="button"
               class="btn-close"
@@ -903,35 +730,33 @@
       </div>
     </div>
 
-     <!-- Issah Pavillion -->
-     <div
-     class="modal fade"
-     id="issah-pavillion-modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">
-            Issah Pavilion
-           </h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/issah_pavilion.JPG"
-               class="card-img-top"
-               alt="..."
-             />
-             <!-- <div class="card-body">
+    <!-- Issah Pavillion -->
+    <div
+      class="modal fade"
+      id="issah-pavillion-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Issah Pavilion</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/issah_pavilion.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
              <h5 class="card-title">Card title</h5>
              <p class="card-text">
                Some quick example text to build on the card title and make up
@@ -939,41 +764,39 @@
              </p>
              <a href="#" class="btn btn-primary">Go somewhere</a>
            </div> -->
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-     <!-- New auditorium -->
-     <div
-     class="modal fade"
-     id="new-auditorium-modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">
-             New auditorium
-           </h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/new_auditoriom.JPG"
-               class="card-img-top"
-               alt="..."
-             />
-             <!-- <div class="card-body">
+    <!-- New auditorium -->
+    <div
+      class="modal fade"
+      id="new-auditorium-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New auditorium</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/new_auditoriom.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
              <h5 class="card-title">Card title</h5>
              <p class="card-text">
                Some quick example text to build on the card title and make up
@@ -981,11 +804,11 @@
              </p>
              <a href="#" class="btn btn-primary">Go somewhere</a>
            </div> -->
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Franky jay -->
     <div
@@ -1027,8 +850,8 @@
       </div>
     </div>
 
-      <!-- Franky jay -->
-      <div
+    <!-- Franky jay -->
+    <div
       class="modal fade"
       id="graduate-lecture-modal"
       tabindex="-1"
@@ -1038,7 +861,9 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Graduate lecture block</h5>
+            <h5 class="modal-title" id="exampleModalLabel">
+              Graduate lecture block
+            </h5>
             <button
               type="button"
               class="btn-close"
@@ -1068,32 +893,32 @@
     </div>
 
     <!-- kwamanman rural bank -->
-     <div
-     class="modal fade"
-     id="kwamanman_rural_bank_modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">kwamanman</h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/KWAMANMAN_RURAL_BANK.JPG"
-               class="card-img-top"
-               alt="..."
-             />
-             <!-- <div class="card-body">
+    <div
+      class="modal fade"
+      id="kwamanman_rural_bank_modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">kwamanman</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/KWAMANMAN_RURAL_BANK.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
                <h5 class="card-title">Card title</h5>
                <p class="card-text">
                  Some quick example text to build on the card title and make up
@@ -1101,11 +926,11 @@
                </p>
                <a href="#" class="btn btn-primary">Go somewhere</a>
              </div> -->
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- aamusted football field -->
     <div
@@ -1551,40 +1376,37 @@
       </div>
     </div>
 
-
-   <!--Computer lap two modal -->
-   <div
-   class="modal fade"
-   id="computer-lab-two-modal"
-   tabindex="-1"
-   aria-labelledby="exampleModalLabel"
-   aria-hidden="true"
- >
-   <div class="modal-dialog">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h5 class="modal-title" id="exampleModalLabel">
-           Computer lab two
-         </h5>
-         <button
-           type="button"
-           class="btn-close"
-           data-bs-dismiss="modal"
-           aria-label="Close"
-         ></button>
-       </div>
-       <div class="modal-body">
-         <div class="card" style="width: 100%">
-           <img
-             src="./src/img/computer lab two.JPG"
-             class="card-img-top"
-             alt="..."
-           />
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+    <!--Computer lap two modal -->
+    <div
+      class="modal fade"
+      id="computer-lab-two-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Computer lab two</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/computer lab two.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!--Atwima hall modal -->
     <div
@@ -1652,107 +1474,101 @@
       </div>
     </div>
 
-     <!-- kesewaa -->
-     <div
-     class="modal fade"
-     id="kesewaa-modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">
-             Kesewaa hostel
-           </h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/Kesewaa hostel.jpeg"
-               class="card-img-top"
-               alt="..."
-             />
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+    <!-- kesewaa -->
+    <div
+      class="modal fade"
+      id="kesewaa-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Kesewaa hostel</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/Kesewaa hostel.jpeg"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-     <!-- ATM GBC -->
-     <div
-     class="modal fade"
-     id="gbc-modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">
-             ATM GBC
-           </h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/ATM_GBC.jpeg"
-               class="card-img-top"
-               alt="..."
-             />
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+    <!-- ATM GBC -->
+    <div
+      class="modal fade"
+      id="gbc-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ATM GBC</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/ATM_GBC.jpeg"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-     <!-- ATM Ecobank -->
-     <div
-     class="modal fade"
-     id="ecobank-modal"
-     tabindex="-1"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true"
-   >
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">
-             ATM Ecobank
-           </h5>
-           <button
-             type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"
-           ></button>
-         </div>
-         <div class="modal-body">
-           <div class="card" style="width: 100%">
-             <img
-               src="./src/img/ATM_Ecobank.jpeg"
-               class="card-img-top"
-               alt="..."
-             />
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+    <!-- ATM Ecobank -->
+    <div
+      class="modal fade"
+      id="ecobank-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ATM Ecobank</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="./src/img/ATM_Ecobank.jpeg"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!--new foculty building modal -->
     <div
@@ -1926,7 +1742,6 @@
       </div>
     </div>
 
-    
     <!--Old library -->
     <div
       class="modal fade"
