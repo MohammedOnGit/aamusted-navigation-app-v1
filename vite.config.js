@@ -1,13 +1,10 @@
-import { defineConfig } from "vite";
-import path from "path";
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
-  },
-  server: {
-    open: true,
-  },
+  build: {
+    outDir: 'dist', // Output directory for build
+    rollupOptions: {
+      input: 'index.html' // Path to your index.html file relative to the root
+    }
+  }
 });

@@ -1,5 +1,25 @@
 
-"use strict";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet.pinsearch/src/Leaflet.PinSearch.css';
+import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
+import 'leaflet-slidemenu/src/L.Control.SlideMenu.css';
+import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css';
+import 'leaflet-openweathermap/leaflet-openweathermap.css';
+import '../css/social.css'; // Adjust path if needed
+import '../css/style.css'; // Adjust path if needed
+
+// Import JavaScript libraries
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'leaflet/dist/leaflet.js';
+import 'leaflet.pinsearch/src/Leaflet.PinSearch.js';
+import 'leaflet-routing-machine/dist/leaflet-routing-machine.min.js';
+import 'leaflet-slidemenu/src/L.Control.SlideMenu.js';
+import '@bagage/leaflet.restoreview/leaflet.restoreview.js';
+import 'leaflet.locatecontrol/dist/L.Control.Locate.min.js';
+import 'leaflet-openweathermap/leaflet-openweathermap.js';
+
+// "use strict";
 // Create a Leaflet map
 const map = L.map("map", {
   center: [6.7004, -1.6811],
@@ -125,51 +145,6 @@ const locateControl = L.control
   })
   .addTo(map);
 
-// const createRoutingControl = () => {
-//   return L.Routing.control({
-//     waypoints: [L.latLng(6.6993, -1.68009), L.latLng(6.7004, -1.68215)],
-//     routeWhileDragging: false,
-//   }).addTo(map);
-// };
-
-// const routingControl = createRoutingControl(); // Initialize the routing control initially
-
-// const createButton = (label, container) => {
-//   const btn = L.DomUtil.create("button", "", container);
-//   btn.setAttribute("type", "button");
-//   btn.innerHTML = label;
-//   // btn.style.border = "2px solid red";  // Add this line to set the red border
-//   btn.style.margin = "3px 0";
-//   btn.style.borderRadius = "10px";
-//   return btn;
-// };
-
-// let clickCount = 0;
-// map.on("click", function (e) {
-//   const container = L.DomUtil.create("div");
-//   container.style.display = "flex";
-//   container.style.flexDirection = "column"; // Corrected to "column"
-
-//   if (clickCount % 2 === 0) {
-//     const startBtn = createButton("Start from this location", container);
-//     L.DomEvent.on(startBtn, "click", function () {
-//       routingControl.spliceWaypoints(0, 1, e.latlng);
-//       map.closePopup();
-//     });
-//   } else {
-//     const destBtn = createButton("Go to this location", container);
-//     L.DomEvent.on(destBtn, "click", function () {
-//       routingControl.spliceWaypoints(
-//         routingControl.getWaypoints().length - 1,
-//         1,
-//         e.latlng
-//       );
-//       map.closePopup();
-//     });
-//   }
-//   L.popup().setContent(container).setLatLng(e.latlng).openOn(map);
-//   clickCount++;
-// });
 
 const createRoutingControl = () => {
   return L.Routing.control({
