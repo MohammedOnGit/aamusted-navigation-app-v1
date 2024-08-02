@@ -1,5 +1,5 @@
-"use strict";
 
+"use strict";
 // Create a Leaflet map
 const map = L.map("map", {
   center: [6.7004, -1.6811],
@@ -96,7 +96,7 @@ const baseMaps = {
 };
 
 const apiKey = "43ddd296d66e7cc444c5105a82a6abe5";
-$(function () {
+(function () {
   L.control
     .weather({
       apiKey,
@@ -125,10 +125,63 @@ const locateControl = L.control
   })
   .addTo(map);
 
+// const createRoutingControl = () => {
+//   return L.Routing.control({
+//     waypoints: [L.latLng(6.6993, -1.68009), L.latLng(6.7004, -1.68215)],
+//     routeWhileDragging: false,
+//   }).addTo(map);
+// };
+
+// const routingControl = createRoutingControl(); // Initialize the routing control initially
+
+// const createButton = (label, container) => {
+//   const btn = L.DomUtil.create("button", "", container);
+//   btn.setAttribute("type", "button");
+//   btn.innerHTML = label;
+//   // btn.style.border = "2px solid red";  // Add this line to set the red border
+//   btn.style.margin = "3px 0";
+//   btn.style.borderRadius = "10px";
+//   return btn;
+// };
+
+// let clickCount = 0;
+// map.on("click", function (e) {
+//   const container = L.DomUtil.create("div");
+//   container.style.display = "flex";
+//   container.style.flexDirection = "column"; // Corrected to "column"
+
+//   if (clickCount % 2 === 0) {
+//     const startBtn = createButton("Start from this location", container);
+//     L.DomEvent.on(startBtn, "click", function () {
+//       routingControl.spliceWaypoints(0, 1, e.latlng);
+//       map.closePopup();
+//     });
+//   } else {
+//     const destBtn = createButton("Go to this location", container);
+//     L.DomEvent.on(destBtn, "click", function () {
+//       routingControl.spliceWaypoints(
+//         routingControl.getWaypoints().length - 1,
+//         1,
+//         e.latlng
+//       );
+//       map.closePopup();
+//     });
+//   }
+//   L.popup().setContent(container).setLatLng(e.latlng).openOn(map);
+//   clickCount++;
+// });
+
 const createRoutingControl = () => {
   return L.Routing.control({
     waypoints: [L.latLng(6.6993, -1.68009), L.latLng(6.7004, -1.68215)],
     routeWhileDragging: false,
+    createMarker: function(i, waypoint, n) {
+      const label = i === 0 ? 'start location' : 'Destination'; // Assign 'A' to the start and 'B' to the destination
+      return L.marker(waypoint.latLng).bindTooltip(label, {
+        permanent: true,
+        direction: 'right'
+      }).openTooltip();
+    }
   }).addTo(map);
 };
 
@@ -139,18 +192,17 @@ const createButton = (label, container) => {
   btn.setAttribute("type", "button");
   btn.innerHTML = label;
   // btn.style.border = "2px solid red";  // Add this line to set the red border
-  btn.style.margin = "3px 0"; 
-  btn.style.borderRadius = "10px"
+  btn.style.margin = "3px 0";
+  btn.style.borderRadius = "10px";
   return btn;
 };
 
 let clickCount = 0;
-
 map.on("click", function (e) {
   const container = L.DomUtil.create("div");
   container.style.display = "flex";
   container.style.flexDirection = "column"; // Corrected to "column"
-  
+
   if (clickCount % 2 === 0) {
     const startBtn = createButton("Start from this location", container);
     L.DomEvent.on(startBtn, "click", function () {
@@ -160,7 +212,11 @@ map.on("click", function (e) {
   } else {
     const destBtn = createButton("Go to this location", container);
     L.DomEvent.on(destBtn, "click", function () {
-      routingControl.spliceWaypoints(routingControl.getWaypoints().length - 1, 1, e.latlng);
+      routingControl.spliceWaypoints(
+        routingControl.getWaypoints().length - 1,
+        1,
+        e.latlng
+      );
       map.closePopup();
     });
   }
@@ -168,8 +224,26 @@ map.on("click", function (e) {
   clickCount++;
 });
 
-
 const layerControl = L.control.layers(baseMaps).addTo(map);
+
+// ALERT TO BE IMPLEMENTED LATER
+
+  // Function to show the Bootstrap alert and make it disappear after 2 seconds
+  // function showAlert() {
+
+  //   // Show the Bootstrap alert
+  //   document.getElementById('customAlert');
+
+  //   // Set a timeout to hide the alert after 2000 milliseconds (2 seconds)
+  //   setTimeout(function() {
+  //     // Hide the alert
+  //     document.getElementById('customAlert').style.display = 'none';
+  //   }, 4000);
+  // }
+
+  // // Call the function when the page loads (you can call it based on an event like button click, etc.)
+  // showAlert();
+
 
 // Social medial links
 const twitterLink =
@@ -218,11 +292,6 @@ const computerLabOneListItem = `<button type="button" id="computer-lab-one-btn" 
 
 const gradateLectureBlockListItem = `<button type="button" id="graduate-lecture-block-btn" class="list-group-item list-group-item-action">Graduate lecture block</button>`;
 
-// Lecture Halls Accordion item
-const letureHallsAccordionItem = `<h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">LECTURE HALLS</h6><div class="accordion-item"><span class="uw-slant"></span><div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group">${ROBListItem}${computerLabOneListItem}${gradateLectureBlockListItem}<button type="button" id="new-buildinglh-btn" class="list-group-item list-group-item-action">New building</button><button type="button" id="NFB-btn" class="list-group-item list-group-item-action">New faculty building</button><button type="button" id="NLB-btn" class="list-group-item list-group-item-action">New library building</button><button type="button" id="computer-lab2-btn" class="list-group-item list-group-item-action">Computer lab two</button><button type="button" id="hospitality-dep-btn" class="list-group-item list-group-item-action">Hospitality department</button></div></div></div></div>`;
-
-const aamustedWorkshopListItem = `<button type="button" id="aamusted-workshop" class="list-group-item list-group-item-action">AAMUSTED workshop</button>`;
-
 const opokuWareHallListItem = `<button type="button" id="opoku-ware-btn" class="list-group-item list-group-item-action"aria-current="true">Opoku ware hall</button>`;
 
 const opokuWareMosqueListItem = `<button type="button" id="opoku-ware-mosqueBtn"class="list-group-item list-group-item-action">Opoku ware mosque</button>`;
@@ -259,6 +328,11 @@ const administrationListItem = `<button type="button" id="administration-btn" cl
 
 // Buildings Accordion
 const buildingsAccordionItem = `<div class="accordion-item"><h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"aria-expanded="false" aria-controls="flush-collapseThree">BUILDINGS</h6><span class="uw-slant"></span><div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group">${administrationListItem}${opokuWareHallListItem}${opokuWareMosqueListItem}${canteenListItem}${uncompletedAuditoriumListItem}${autonomyHallListItem}${atwimaHallListItem}${automotiveWorkshopListItem}${newAuditoriumListItem}${mechanicalWorkshopListItem}${constructionLab}${frankyJayListItem}${constructionLab}${frankyJayListItem}${stWilliamsItemList}${kwamanmanListItem}${facultyOfTechEduListItem}</div></div></div></div>`;
+
+// Lecture Halls Accordion item
+const letureHallsAccordionItem = `<h6 class="header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">LECTURE HALLS</h6><div class="accordion-item"><span class="uw-slant"></span><div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"data-bs-parent="#accordionFlushExample"><div class="accordion-body"><div class="list-group">${ROBListItem}${computerLabOneListItem}${gradateLectureBlockListItem}<button type="button" id="new-buildinglh-btn" class="list-group-item list-group-item-action">New building</button><button type="button" id="NFB-btn" class="list-group-item list-group-item-action">New faculty building</button><button type="button" id="NLB-btn" class="list-group-item list-group-item-action">New library building</button><button type="button" id="computer-lab2-btn" class="list-group-item list-group-item-action">Computer lab two</button><button type="button" id="hospitality-dep-btn" class="list-group-item list-group-item-action">Hospitality department</button></div></div></div></div>`;
+
+const aamustedWorkshopListItem = `<button type="button" id="aamusted-workshop" class="list-group-item list-group-item-action">AAMUSTED workshop</button>`;
 
 const sideMenuAccordion = `
   <div class="accordion accordion-flush" id="accordionFlushExample">
