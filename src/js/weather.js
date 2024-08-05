@@ -120,6 +120,8 @@ L.Control.Weather = L.Control.extend({
   }
 });
 
+
+
 L.control.weather = function(options) {
   if (!options.apiKey) {
     console.warn("Leaflet.Weather: You must provide an OpenWeather API key.\nPlease see https://openweathermap.org/faq#error401 for more info");
