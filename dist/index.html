@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <title>Aamusted Navigation</title>
+    <script type="module" crossorigin src="/aamusted-navigation-app-v1/assets/index-CmKnaZPA.js"></script>
+    <link rel="stylesheet" crossorigin href="/aamusted-navigation-app-v1/assets/index-jwONQcBg.css">
+  </head>
+  <body>
+    <!-- online alert -->
+    <div class="alert alert-success" role="alert" id="online-alert">
+      Your connection was restored!
+    </div>
+
+    <div class="alert alert-danger" role="alert" id="offline-alert">
+      You are currently offline!
+    </div>
+
+    <div id="map"></div>
+
+    <!--Nana banahene Modal -->
+    <div
+      class="modal fade"
+      id="nana-banahene-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Nana Banahene Study Pavilion
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/images/memorial study pavilion.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">
+                 Some quick example text to build on the card title and make up
+                 the bulk of the card's content.
+               </p>
+               <a href="#" class="btn btn-primary">Go somewhere</a>
+             </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Nana banahene Modal -->
+    <div
+      class="modal fade"
+      id="faculty-of-technical-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Faculty of Technical Education
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/faculty_of_technical_educatio.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                 <h5 class="card-title">Card title</h5>
+                 <p class="card-text">
+                   Some quick example text to build on the card title and make up
+                   the bulk of the card's content.
+                 </p>
+                 <a href="#" class="btn btn-primary">Go somewhere</a>
+               </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--administration Modal -->
+    <div
+      class="modal fade"
+      id="administration-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adminstration</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/adminstration.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">
+                 Some quick example text to build on the card title and make up
+                 the bulk of the card's content.
+               </p>
+               <a href="#" class="btn btn-primary">Go somewhere</a>
+             </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Account office Modal -->
+    <div
+      class="modal fade"
+      id="account-office-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Faculty of Technical Education
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/faculty_of_technical_educatio.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Dean FTE office Modal -->
+    <div
+      class="modal fade"
+      id="dean-FTE-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Dean(Faculty of Technical Edu.)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/faculty_of_technical_educatio.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">
+                 Some quick example text to build on the card title and make up
+                 the bulk of the card's content.
+               </p>
+               <a href="#" class="btn btn-primary">Go somewhere</a>
+             </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Hosptality department Modal -->
+    <div
+      class="modal fade"
+      id="hospitality-dep-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Hosptality department
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/hospitality_dep.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Opoku ware Modal -->
+    <div
+      class="modal fade"
+      id="opuku-ware-Modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Opoku ware hall</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/Opoku_Ware_Hall.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Opoku ware Modal -->
+    <div
+      class="modal fade"
+      id="fasme-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Faculty of Applied Science and Mathematics Education(FASME)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/FACULTY_OF_SCIENCE_AND_MATHEMATICS_EDUCATION (FASME).JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">
+                 Some quick example text to build on the card title and make up
+                 the bulk of the card's content.
+               </p>
+               <a href="#" class="btn btn-primary">Go somewhere</a>
+             </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- hospitality-modal Modal -->
+    <div
+      class="modal fade"
+      id="hospitality-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Tourism and hospitality
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/hospitality_tourism_lab.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">
+                 Some quick example text to build on the card title and make up
+                 the bulk of the card's content.
+               </p>
+               <a href="#" class="btn btn-primary">Go somewhere</a>
+             </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- mechanical workshop Modal -->
+    <div
+      class="modal fade"
+      id="mechanical-workshop-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Mechanical workshop
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/mechenical_workshop.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- computer lab one -->
+    <div
+      class="modal fade"
+      id="computer-lab-one"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Computer lab one</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/computer lab one.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">
+                 Some quick example text to build on the card title and make up
+                 the bulk of the card's content.
+               </p>
+               <a href="#" class="btn btn-primary">Go somewhere</a>
+             </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SRC secretariet Modal -->
+    <div
+      class="modal fade"
+      id="src-secretariet"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">SRC secretariet</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/SRC_SECRETRAITE.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AAMUSTED main entrance -->
+    <div
+      class="modal fade"
+      id="main-entrance"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              AAMUSRED main entrance
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/AAMUSTED_ENTRANCE_and_SECURITY_CHECK POINT.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">
+                 Some quick example text to build on the card title and make up
+                 the bulk of the card's content.
+               </p>
+               <a href="#" class="btn btn-primary">Go somewhere</a>
+             </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UBA -->
+    <div
+      class="modal fade"
+      id="uba"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">UBA</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img src="/aamusted-navigation-app-v1/images/UBA.JPG" class="card-img-top" alt="..." />
+              <!-- <div class="card-body">
+                 <h5 class="card-title">Card title</h5>
+                 <p class="card-text">
+                   Some quick example text to build on the card title and make up
+                   the bulk of the card's content.
+                 </p>
+                 <a href="#" class="btn btn-primary">Go somewhere</a>
+               </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Construction and wood workshop -->
+    <div
+      class="modal fade"
+      id="construction-lab"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Construction and wood workshop
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/Construction_and Wood_Work_Lab.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make up
+                    the bulk of the card's content.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Automotive workshop -->
+    <div
+      class="modal fade"
+      id="automotive-workshop"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Automotive workshop
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/Automotive_Work Shop.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Issah Pavillion -->
+    <div
+      class="modal fade"
+      id="issah-pavillion-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Issah Pavilion</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/issah_pavilion.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+             <h5 class="card-title">Card title</h5>
+             <p class="card-text">
+               Some quick example text to build on the card title and make up
+               the bulk of the card's content.
+             </p>
+             <a href="#" class="btn btn-primary">Go somewhere</a>
+           </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- New auditorium -->
+    <div
+      class="modal fade"
+      id="new-auditorium-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New auditorium</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/new_auditoriom.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+             <h5 class="card-title">Card title</h5>
+             <p class="card-text">
+               Some quick example text to build on the card title and make up
+               the bulk of the card's content.
+             </p>
+             <a href="#" class="btn btn-primary">Go somewhere</a>
+           </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Franky jay -->
+    <div
+      class="modal fade"
+      id="franky-jay-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Franky Jay</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/FRANKY_JAY.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+             <h5 class="card-title">Card title</h5>
+             <p class="card-text">
+               Some quick example text to build on the card title and make up
+               the bulk of the card's content.
+             </p>
+             <a href="#" class="btn btn-primary">Go somewhere</a>
+           </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Franky jay -->
+    <div
+      class="modal fade"
+      id="graduate-lecture-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Graduate lecture block
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/Graduate Lecture Block.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+             <h5 class="card-title">Card title</h5>
+             <p class="card-text">
+               Some quick example text to build on the card title and make up
+               the bulk of the card's content.
+             </p>
+             <a href="#" class="btn btn-primary">Go somewhere</a>
+           </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- kwamanman rural bank -->
+    <div
+      class="modal fade"
+      id="kwamanman_rural_bank_modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">kwamanman</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/KWAMANMAN_RURAL_BANK.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+               <h5 class="card-title">Card title</h5>
+               <p class="card-text">
+                 Some quick example text to build on the card title and make up
+                 the bulk of the card's content.
+               </p>
+               <a href="#" class="btn btn-primary">Go somewhere</a>
+             </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- aamusted football field -->
+    <div
+      class="modal fade"
+      id="aamusted-football-pitch"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              AAMUSTED football field
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/AAMUSTED_Football_Field.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                 <h5 class="card-title">Card title</h5>
+                 <p class="card-text">
+                   Some quick example text to build on the card title and make up
+                   the bulk of the card's content.
+                 </p>
+                 <a href="#" class="btn btn-primary">Go somewhere</a>
+               </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AAMUSTED Workshop -->
+    <div
+      class="modal fade"
+      id="aamusted-workshop"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              AAMUSTED workshop
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/AAMUSTED_WORKSHOPS.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UBS Modal -->
+    <div
+      class="modal fade"
+      id="usb"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              University Basic School
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/UNVERSITY_BASIC SCHOOL_(UBS).JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ict Modal -->
+    <div
+      class="modal fade"
+      id="ict-library"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              ICT & Library Block
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/New_ICT_and_Library_Block.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AAMUSTED CLINIC Modal -->
+    <div
+      class="modal fade"
+      id="aamusted-clinic"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">AAMUSTED clinic</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/AAMUSTED_CLINIC.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- New lecture block -->
+    <div
+      class="modal fade"
+      id="new-lecture-block"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              New lecture block(NLB)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/NEW_LECTURE_BOLCK_(NLB).JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- autonomy hall modal -->
+    <div
+      class="modal fade"
+      id="autonomy-hall-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Autonomy Hall</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/Autonomy_Hall.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- autonomy hall anex modal -->
+    <div
+      class="modal fade"
+      id="autonomy-anex"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Autonomy hall anex
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/Autonomy_Hall_Anexed.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Opuku ware tenis court modal -->
+    <div
+      class="modal fade"
+      id="opoku-ware-tenis"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Opoku Ware tenis court
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/OPOKU_WARI TENIS_COURT.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--ROB modal -->
+    <div
+      class="modal fade"
+      id="ROB-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ROB</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img src="/aamusted-navigation-app-v1/images/ROB.JPG" class="card-img-top" alt="..." />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Uncompleted auditotrium Modal modal -->
+    <div
+      class="modal fade"
+      id="uncompleted-auditorium-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Uncompleted auditorium
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/UNCOMPLETED_AUDITORIUM.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Computer lap two modal -->
+    <div
+      class="modal fade"
+      id="computer-lab-two-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Computer lab two</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/computer lab two.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Atwima hall modal -->
+    <div
+      class="modal fade"
+      id="atwima-hall-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Atwima hall</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/Atwima_Hall.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- campus-security post -->
+    <div
+      class="modal fade"
+      id="campus-security"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Campus security post
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/SECOND_SECURITY_POST.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- kesewaa -->
+    <div
+      class="modal fade"
+      id="kesewaa-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Kesewaa hostel</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/Kesewaa hostel.jpeg"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATM GBC -->
+    <div
+      class="modal fade"
+      id="gbc-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ATM GBC</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img src="/aamusted-navigation-app-v1/images/ATM_GBC.jpeg" class="card-img-top" alt="..." />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATM Ecobank -->
+    <div
+      class="modal fade"
+      id="ecobank-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ATM Ecobank</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/ATM_Ecobank.jpeg"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--new foculty building modal -->
+    <div
+      class="modal fade"
+      id="new-foculty-building"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              New foculty building
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/NEW_FACULTY_BLOCK_(NFB).JPG"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--St Williams Chaplaincy -->
+    <div
+      class="modal fade"
+      id="st-williams-chaplaincy-mmodal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              St Williams chaplaincy
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/St-william.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+              <!-- <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Aamusted canteen -->
+    <div
+      class="modal fade"
+      id="aamuste-canteen"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">AAMUSTED canteen</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/AAMUSTED_CANTEEN.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--tl modal -->
+    <div
+      class="modal fade"
+      id="tl-block"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">TL block</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img src="/aamusted-navigation-app-v1/images/TL_BLOCK.JPG" class="card-img-top" alt="..." />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Old library -->
+    <div
+      class="modal fade"
+      id="old-library"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Old library</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/OLD_LIBRARY_and_ICT_LAB..JPG"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Old library -->
+    <div
+      class="modal fade"
+      id="old-library-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New library</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card" style="width: 100%">
+              <img
+                src="/aamusted-navigation-app-v1/images/new _library.JPG"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
