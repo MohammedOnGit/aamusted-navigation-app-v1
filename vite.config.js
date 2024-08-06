@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: '/aamusted-navigation-app-v1/', // Base path for assets
   build: {
     outDir: 'dist', // Output directory for build
     rollupOptions: {
