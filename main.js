@@ -24,6 +24,8 @@ import 'leaflet-openweathermap/leaflet-openweathermap.js';
 // Import custom scripts
 import { coordinatesData } from "./src/js/Data.js";
 import searchBar from "./src/js/pinsearch.js";
+import logoImage from './src/assets/cropped-AAMUSTED-LOGO.jpg';
+
 
 // Create a Leaflet map
 const map = L.map("map", {
@@ -271,7 +273,7 @@ const sideMenuAccordion = `
   </div>
 `;
 
-const imageSection = `<div class="container-fluid"><div class="row"> <h1 id="title">AAMUSTED NAVIGATION</h1> <span id="title-slant" class="uw-slant-large"></span><div class="col"><img src="/images/cropped-AAMUSTED-LOGO.jpg" class="img-fluid" alt="aamusted logo"/></div></div></div>`;
+const imageSection = `<div class="container-fluid"><div class="row"> <h1 id="title">AAMUSTED NAVIGATION</h1> <span id="title-slant" class="uw-slant-large"></span><div class="col"><img src="${logoImage}" class="img-fluid" loading="lazy" alt="AAMUSTED logo"/></div></div></div>`;
 
 const terms = `<div class="list-group" id="terms"><a style="color: #FFFFFF; text-decoration:underline;" href="./public/Terms-of-Service/">Terms of Service</a><span style="color: #FFFFFF; text-decoration:underline;">|</span><a style="color: #FFFFFF; text-decoration:underline;" href="./public/Cookie-Policy/">Cookie Policy</a</div>`;
 
